@@ -120,7 +120,7 @@ function ItemsList({ group }: { group: number }) {
       {data[group].items.map((item, i) => (
         <a
           key={i}
-          className="group/item flex cursor-pointer items-center gap-3 text-3xl text-white transition-all group-hover/parent:text-muted hover:text-white lg:text-6xl"
+          className="group/item flex cursor-pointer items-center gap-3 text-3xl text-foreground transition-all group-hover/parent:text-muted hover:text-foreground lg:text-6xl"
           href={item.href}
           target="_blank"
         >
@@ -141,9 +141,9 @@ export function TechStack() {
   const measureRef = useRef<HTMLDivElement>(null)
 
   const [groupLayouts, setGroupLayouts] = useState<GroupLayout[]>([])
-  const [totalScrollDistance, setTotalScrollDistance] = useState(0)
-  const [scrollProgress, setScrollProgress] = useState(0)
-  const [viewportHeight, setViewportHeight] = useState(0)
+  const [totalScrollDistance, setTotalScrollDistance] = useState<number>(0)
+  const [scrollProgress, setScrollProgress] = useState<number>(0)
+  const [viewportHeight, setViewportHeight] = useState<number>(0)
 
   const measure = useCallback(() => {
     const measureContainer = measureRef.current
@@ -223,7 +223,7 @@ export function TechStack() {
       >
         <div className="sticky top-[20vh] h-[60vh] overflow-hidden border-y-1">
           <div className="grid h-full grid-cols-1 lg:grid-cols-2">
-            <div className="flex h-full w-full items-center justify-center border-r">
+            <div className="relative flex h-full w-full items-center justify-center border-r">
               {data.map((category, i) => (
                 <div
                   key={i}
@@ -236,7 +236,11 @@ export function TechStack() {
                   aria-hidden={data[activeGroup].name !== category.name}
                 >
                   <Image
-                    className={cn(category.image.invert ? "invert" : "")}
+                    className={cn(
+                      category.image.invert
+                        ? "dark:invert"
+                        : "invert dark:invert-0"
+                    )}
                     {...category.image}
                     alt={category.name}
                   />
