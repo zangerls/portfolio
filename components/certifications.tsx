@@ -5,8 +5,9 @@ import { Container } from "./container"
 import { cn } from "@/lib/utils"
 import { IconArrowRight } from "@tabler/icons-react"
 import { Button } from "./ui/button"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Crosshair } from "./crosshair"
+import { Progress } from "./ui/progress"
 
 const pseudoMatrix = [
   undefined,
@@ -61,22 +62,66 @@ const simplifiedCerts = pseudoMatrix.filter((x) => x?.id).map((x) => x!.id)
 
 export function Certifications() {
   const [certificationId, setCertificationId] = useState<string>("google")
+  const [progress, setProgress] = useState<number>(0)
+  const [hovered, setHovered] = useState<boolean>(false)
+  const startTimeRef = useRef<number>(Date.now())
+  const pausedElapsedRef = useRef<number>(0)
 
   const certification = pseudoMatrix.find((c) => c?.id === certificationId)
 
+  function resetTimer(nextId?: string) {
+    startTimeRef.current = Date.now()
+    pausedElapsedRef.current = 0
+    setProgress(0)
+    if (nextId !== undefined) setCertificationId(nextId)
+  }
+
   function handleNext(): void {
     const index = simplifiedCerts.indexOf(certificationId)
-    if (index === -1) {
-      setCertificationId("google")
+    const nextId =
+      simplifiedCerts[(index === -1 ? 0 : index + 1) % simplifiedCerts.length]
+    resetTimer(nextId)
+  }
+
+  useEffect(() => {
+    if (hovered) {
+      pausedElapsedRef.current = Date.now() - startTimeRef.current
       return
     }
-    setCertificationId(simplifiedCerts[(index + 1) % simplifiedCerts.length])
-  }
+
+    startTimeRef.current = Date.now() - pausedElapsedRef.current
+
+    const interval = setInterval(() => {
+      const elapsed = Date.now() - startTimeRef.current
+      const newProgress = Math.min((elapsed / 5000) * 100, 100)
+      setProgress(newProgress)
+
+      if (elapsed >= 5000) {
+        startTimeRef.current = Date.now()
+        setCertificationId((current) => {
+          const index = simplifiedCerts.indexOf(current)
+          return simplifiedCerts[
+            (index === -1 ? 0 : index + 1) % simplifiedCerts.length
+          ]
+        })
+      }
+    }, 50)
+
+    return () => clearInterval(interval)
+  }, [hovered])
 
   return (
     <Container>
-      <div className="grid grid-cols-1 divide-x border-l md:grid-cols-2 lg:grid-cols-3">
+      <div
+        className="grid grid-cols-1 divide-x border-l md:grid-cols-2 lg:grid-cols-3"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
         <div className="relative col-span-1 flex flex-col justify-between border-b lg:col-span-2">
+          <Progress
+            value={progress}
+            className="absolute bottom-0 left-0 w-full"
+          />
           <Crosshair position="top-right" />
           <p className="p-4 font-heading text-xl font-semibold lg:text-3xl">
             Certifications
@@ -89,7 +134,7 @@ export function Certifications() {
               {certification?.description}
             </p>
           </div>
-          <Button size="icon-lg" className="self-end" onClick={handleNext}>
+          <Button size="icon-lg" className="z-10 self-end" onClick={handleNext}>
             <IconArrowRight />
           </Button>
         </div>
@@ -97,9 +142,7 @@ export function Certifications() {
           <div className="grid grid-cols-4 divide-x divide-y">
             {pseudoMatrix.map((element, i) => (
               <div
-                onClick={
-                  !!element ? () => setCertificationId(element.id) : undefined
-                }
+                onClick={!!element ? () => resetTimer(element.id) : undefined}
                 role={element?.name ?? "button"}
                 key={i}
                 className={cn(
