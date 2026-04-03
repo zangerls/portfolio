@@ -131,3 +131,15 @@
     cursor: pointer;
   }
 }
+
+::selection {
+  background: var(--foreground);
+  color: var(--background);
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: var(--foreground);
+  color: var(--background);
+  text-shadow: none;
+}
