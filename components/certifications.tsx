@@ -113,6 +113,7 @@ export function Certifications() {
   return (
     <Container>
       <div
+        id="certifications"
         className="grid grid-cols-1 divide-x border-l md:grid-cols-2 lg:grid-cols-3"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
