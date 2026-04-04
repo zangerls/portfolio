@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
+import ReactLenis from "lenis/react"
 import { Navbar } from "@/components/navbar"
 
 const poppinsHeading = Poppins({
@@ -37,8 +38,10 @@ export default function RootLayout({
     >
       <body>
         <ThemeProvider defaultTheme="dark" enableSystem={false}>
+          <ReactLenis root>
             <Navbar />
             {children}
+          </ReactLenis>
         </ThemeProvider>
       </body>
     </html>
