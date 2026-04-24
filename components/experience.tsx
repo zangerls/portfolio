@@ -57,18 +57,19 @@ type ListItemProps = {
 
 function ListItem({ label, index, setHovered }: ListItemProps) {
   return (
-    <li
-      className="group/item py-2 lg:py-4"
-      onClick={() => setHovered(index)}
-      onMouseEnter={() => setHovered(index)}
-      onMouseLeave={() => setHovered(-1)}
-    >
-      <div className="flex items-center gap-4">
-        <div className="aspect-square h-2 bg-primary transition-all group-hover/item:bg-primary! group-hover/list:bg-muted" />
-        <p className="cursor-pointer font-heading text-lg font-semibold transition-all group-hover/item:text-primary! group-hover/list:text-muted lg:text-2xl">
+    <li>
+      <button
+        className="group/item flex w-full items-center gap-4 py-2 text-left lg:py-4"
+        onClick={() => setHovered(index)}
+        onMouseEnter={() => setHovered(index)}
+        onMouseLeave={() => setHovered(-1)}
+        aria-label={`View details for: ${label}`}
+      >
+        <div className="aspect-square h-2 shrink-0 bg-primary transition-all group-hover/item:bg-primary! group-hover/list:bg-muted" />
+        <span className="font-heading text-lg font-semibold transition-all group-hover/item:text-primary! group-hover/list:text-muted lg:text-2xl">
           {label}
-        </p>
-      </div>
+        </span>
+      </button>
     </li>
   )
 }
@@ -78,12 +79,16 @@ export function Experience() {
 
   return (
     <Container>
-      <div className="grid grid-cols-1 divide-x border border-b-0 lg:grid-cols-3">
+      <section
+        id="experience"
+        aria-label="Experience"
+        className="grid grid-cols-1 divide-x border border-b-0 lg:grid-cols-3"
+      >
         <div className="relative col-span-1 p-4 lg:col-span-2 lg:p-12">
           <Crosshair position="top-left" />
-          <p className="font-heading text-2xl font-bold lg:text-4xl">
+          <h2 className="font-heading text-2xl font-bold lg:text-4xl">
             Fullstack Engineer
-          </p>
+          </h2>
           <div className="mt-2 flex items-center gap-2 lg:gap-4">
             <p className="text-sm text-muted-foreground lg:text-xl">
               at Kulturplanner
@@ -107,7 +112,7 @@ export function Experience() {
             ))}
           </ul>
         </div>
-        <div className="relative col-span-1 flex items-center justify-center p-4">
+        <div className="relative col-span-1 flex h-52 items-center justify-center p-4 lg:h-auto">
           <Crosshair position="bottom-left" />
           <p className="text-sm lg:text-xl">
             {hoveredIndex < 0 ? (
@@ -123,7 +128,7 @@ export function Experience() {
             )}
           </p>
         </div>
-      </div>
+      </section>
     </Container>
   )
 }
