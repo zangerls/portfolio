@@ -9,7 +9,12 @@ export function Container({
   withBorder?: boolean
 }) {
   return (
-    <div className={cn(withBorder && "border-x", "mx-4 lg:mx-56")}>
+    <div
+      className={cn(
+        withBorder && "border-x",
+        "mx-4 md:mx-12 lg:mx-20 xl:mx-56"
+      )}
+    >
       {children}
     </div>
   )
