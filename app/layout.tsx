@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
 import ReactLenis from "lenis/react"
 import { Navbar } from "@/components/navbar"
+import { Metadata } from "next"
 
 const poppinsHeading = Poppins({
   weight: ["400", "600"],
@@ -18,6 +19,20 @@ const fontSans = Geist({
 })
 
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" })
+
+export const metadata: Metadata = {
+  title: {
+    template: "%s | S.",
+    default: "About Me | Simon Zangerl",
+  },
+  description: "Portfolio of Simon Zangerl",
+  authors: [{ name: "Simon Zangerl", url: "https://simon-zangerl.com" }],
+  creator: "Simon Zangerl",
+  publisher: "Simon Zangerl",
+  appleWebApp: {
+    title: "S.",
+  },
+}
 
 export default function RootLayout({
   children,
