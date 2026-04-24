@@ -3,7 +3,11 @@
 import Image from "next/image"
 import { Container } from "./container"
 import { cn } from "@/lib/utils"
-import { IconArrowRight } from "@tabler/icons-react"
+import {
+  IconArrowRight,
+  IconPlayerPause,
+  IconPlayerPlay,
+} from "@tabler/icons-react"
 import { Button } from "./ui/button"
 import { useEffect, useRef, useState } from "react"
 import { Crosshair } from "./crosshair"
@@ -112,9 +116,10 @@ export function Certifications() {
 
   return (
     <Container>
-      <div
+      <section
         id="certifications"
-        className="grid grid-cols-1 divide-x border-l md:grid-cols-2 lg:grid-cols-3"
+        aria-label="Certifications"
+        className="grid grid-cols-1 divide-x border-l lg:grid-cols-3"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -122,52 +127,78 @@ export function Certifications() {
           <Progress
             value={progress}
             className="absolute bottom-0 left-0 w-full"
+            aria-label={`Certification slideshow progress: ${Math.round(progress)}%`}
           />
           <Crosshair position="top-right" />
-          <p className="p-4 font-heading text-xl font-semibold lg:text-3xl">
+          <h2 className="p-4 font-heading text-xl font-semibold lg:text-3xl">
             Certifications
-          </p>
-          <div className="self-center text-center">
-            <p className="font-heading text-2xl font-semibold lg:mx-32 lg:text-3xl">
-              {certification?.name}
-            </p>
-            <p className="mt-2 text-muted-foreground lg:mx-56">
+          </h2>
+          <div className="mx-4 min-h-56 self-center text-center lg:min-h-1">
+            <div className="flex items-end justify-center xl:mx-16">
+              <p className="font-heading text-2xl font-semibold md:text-3xl xl:text-4xl">
+                {certification?.name}
+              </p>
+            </div>
+            <p className="mx-7 mt-2 text-muted-foreground xl:mx-16">
               {certification?.description}
             </p>
           </div>
-          <Button size="icon-lg" className="z-10 self-end" onClick={handleNext}>
-            <IconArrowRight />
-          </Button>
+          <div className="flex self-end">
+            <Button
+              size="icon-lg"
+              variant="ghost"
+              className="z-3 lg:hidden"
+              onClick={() => setHovered((h) => !h)}
+              aria-label={hovered ? "Resume" : "Pause"}
+            >
+              {hovered ? <IconPlayerPlay /> : <IconPlayerPause />}
+            </Button>
+            <Button
+              size="icon-lg"
+              className="z-3"
+              onClick={handleNext}
+              aria-label="Next certification"
+            >
+              <IconArrowRight aria-hidden="true" />
+            </Button>
+          </div>
         </div>
         <div className="col-span-1">
           <div className="grid grid-cols-4 divide-x divide-y">
-            {pseudoMatrix.map((element, i) => (
-              <div
-                onClick={!!element ? () => resetTimer(element.id) : undefined}
-                role={element?.name ?? "button"}
-                key={i}
-                className={cn(
-                  element && "cursor-pointer bg-primary/5 hover:bg-primary/10",
-                  element?.id === certificationId &&
-                    "bg-primary/20 hover:bg-primary/30",
-                  "relative col-span-1 flex aspect-square w-full items-center justify-center transition-all"
-                )}
-              >
-                {element && (
+            {pseudoMatrix.map((element, i) =>
+              element ? (
+                <button
+                  key={i}
+                  onClick={() => resetTimer(element.id)}
+                  aria-label={`View ${element.name}`}
+                  aria-pressed={element.id === certificationId}
+                  className={cn(
+                    "cursor-pointer bg-primary/5 hover:bg-primary/10",
+                    element.id === certificationId &&
+                      "bg-primary/20 hover:bg-primary/30",
+                    "relative col-span-1 flex aspect-square w-full items-center justify-center transition-all"
+                  )}
+                >
                   <div className="relative aspect-square w-[40%]">
                     <Image
                       src={element.src}
-                      alt={element.name}
+                      alt=""
                       fill
                       className="invert dark:invert-0"
                     />
                   </div>
-                )}
-              </div>
-            ))}
+                </button>
+              ) : (
+                <div
+                  key={i}
+                  aria-hidden="true"
+                  className="relative col-span-1 flex aspect-square w-full items-center justify-center transition-all"
+                />
+              )
+            )}
           </div>
         </div>
-      </div>
+      </section>
     </Container>
   )
 }
