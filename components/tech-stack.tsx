@@ -7,14 +7,25 @@ import { cn } from "@/lib/utils"
 
 type TechData = {
   name: string
-  image: { src: string; height: number; width: number; invert?: boolean }
+  image: {
+    src: string
+    height: number
+    width: number
+    invert?: boolean
+    className?: string
+  }
   items: { label: string; href: string }[]
 }
 
 const data: TechData[] = [
   {
     name: "Node.js",
-    image: { src: "/nodejs.svg", height: 512, width: 512 },
+    image: {
+      src: "/nodejs.svg",
+      height: 512,
+      width: 512,
+      className: "h-36 w-36 sm:h-48 sm:w-48 lg:h-64 lg:w-64",
+    },
     items: [
       { label: "TypeScript", href: "https://www.typescriptlang.org/" },
       { label: "Next.js", href: "https://nextjs.org/" },
@@ -27,14 +38,9 @@ const data: TechData[] = [
       { label: "shadcn", href: "https://ui.shadcn.com/" },
       { label: "Express", href: "https://expressjs.com/" },
       { label: "Next-intl", href: "https://next-intl.dev/" },
-      { label: "Turborepo", href: "https://turborepo.dev/" },
-      { label: "Puppeteer", href: "https://pptr.dev/" },
       { label: "Mantine", href: "https://mantine.dev/" },
       { label: "ai SDK", href: "https://ai-sdk.dev/" },
       { label: "Motion", href: "https://motion.dev/" },
-      { label: "Nodemailer", href: "https://nodemailer.com/" },
-      { label: "Recharts", href: "https://recharts.github.io/" },
-      { label: "Handlebars", href: "https://handlebarsjs.com/" },
     ],
   },
   {
@@ -45,15 +51,26 @@ const data: TechData[] = [
       { label: "psycopg", href: "https://www.psycopg.org/" },
       { label: "Flask", href: "https://flask.palletsprojects.com/en/stable/" },
       { label: "gunicorn", href: "https://gunicorn.org/" },
-      {
-        label: "recordlinkage",
-        href: "https://recordlinkage.readthedocs.io/en/latest/",
-      },
       { label: "Pandas", href: "https://pandas.pydata.org/" },
       { label: "Numpy", href: "https://numpy.org/" },
       { label: "Matplotlib", href: "https://matplotlib.org/" },
       { label: "Seaborn", href: "https://seaborn.pydata.org/" },
       { label: "Pika", href: "https://pika.readthedocs.io/en/stable/" },
+    ],
+  },
+  {
+    name: "C# / .NET",
+    image: {
+      src: "/dotnet.svg",
+      height: 512,
+      width: 512,
+    },
+    items: [
+      { label: "C#", href: "https://learn.microsoft.com/en-us/dotnet/csharp/" },
+      { label: ".NET", href: "https://dotnet.microsoft.com/" },
+      { label: "ASP.NET Core", href: "https://dotnet.microsoft.com/en-us/apps/aspnet" },
+      { label: "SignalR", href: "https://dotnet.microsoft.com/en-us/apps/aspnet/signalr" },
+      { label: "xUnit", href: "https://xunit.net/" },
     ],
   },
   {
@@ -73,11 +90,15 @@ const data: TechData[] = [
 
   {
     name: "Tools & Services",
-    image: { src: "/figma.svg", height: 444, width: 444 },
+    image: {
+      src: "/figma.svg",
+      height: 444,
+      width: 444,
+      className: "h-36 w-36 sm:h-48 sm:w-48 lg:h-64 lg:w-64",
+    },
     items: [
       { label: "Figma", href: "https://www.figma.com" },
       { label: "Linux", href: "https://github.com/torvalds/linux" },
-      { label: "Windows", href: "https://www.microsoft.com/en/windows-server" },
       { label: "Docker", href: "https://www.docker.com/" },
       { label: "Vercel", href: "https://vercel.com/" },
       { label: "Supabase", href: "https://supabase.com/" },
@@ -98,11 +119,6 @@ const data: TechData[] = [
         href: "https://www.microsoft.com/en/dynamics-365",
       },
       { label: "Mailchimp", href: "https://mailchimp.com/" },
-      { label: "Inxmail", href: "https://www.inxmail.de/en/" },
-      { label: "Brevo", href: "https://www.brevo.com/" },
-      { label: "Mailjet", href: "https://www.mailjet.com/" },
-      { label: "CTS Eventim", href: "https://www.eventim.de/" },
-      { label: "SecuTiX", href: "https://www.secutix.com/" },
     ],
   },
 ]
@@ -120,9 +136,10 @@ function ItemsList({ group }: { group: number }) {
       {data[group].items.map((item, i) => (
         <a
           key={i}
-          className="group/item flex cursor-pointer items-center gap-3 text-3xl text-foreground transition-all group-hover/parent:text-muted hover:text-foreground lg:text-6xl"
+          className="group/item flex cursor-pointer items-center gap-3 font-heading text-3xl text-foreground transition-all group-hover/parent:text-muted hover:text-foreground lg:text-6xl"
           href={item.href}
           target="_blank"
+          rel="noopener noreferrer"
         >
           {item.label}
           <IconArrowUpRight
@@ -216,7 +233,7 @@ export function TechStack() {
   }
 
   return (
-    <div>
+    <section id="tech-stack" aria-label="Tech Stack">
       <div
         ref={scrollSectionRef}
         style={{ height: `calc(60vh + 20vh + ${totalScrollDistance}px)` }}
@@ -239,9 +256,14 @@ export function TechStack() {
                     className={cn(
                       category.image.invert
                         ? "dark:invert"
-                        : "invert dark:invert-0"
+                        : "invert dark:invert-0",
+                      category.image.className ??
+                        "h-24 w-24 sm:h-36 sm:w-36 lg:h-48 lg:w-48",
+                      "object-contain"
                     )}
-                    {...category.image}
+                    src={category.image.src}
+                    width={category.image.width}
+                    height={category.image.height}
                     alt={category.name}
                   />
                 </div>
@@ -278,6 +300,6 @@ export function TechStack() {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   )
 }
