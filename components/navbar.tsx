@@ -5,6 +5,8 @@ import { IconMenu2, IconX } from "@tabler/icons-react"
 import { Container } from "./container"
 import { ThemeToggle } from "./theme-toggle"
 import { Separator } from "./ui/separator"
+import Image from "next/image"
+import { scrollToSection } from "@/lib/utils"
 
 type NavbarItem = {
   label: string
@@ -20,36 +22,11 @@ const items: NavbarItem[] = [
   { label: "Get In Touch", href: "get-in-touch" },
 ]
 
-function scrollToSection(id: string): void {
-  const el = document.getElementById(id)
-  if (!el) return
-
-  const targetY = el.getBoundingClientRect().top + window.scrollY
-  const startY = window.scrollY
-  const distance = Math.abs(targetY - startY)
-
-  // Scale duration: 300ms minimum, 1ms per pixel, capped at 900ms
-  const duration = Math.min(Math.max(distance, 300), 900)
-  const startTime = performance.now()
-
-  function easeInOut(t: number) {
-    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
-  }
-
-  function step(now: number) {
-    const elapsed = now - startTime
-    const progress = Math.min(elapsed / duration, 1)
-    window.scrollTo(0, startY + (targetY - startY) * easeInOut(progress))
-    if (progress < 1) requestAnimationFrame(step)
-  }
-
-  requestAnimationFrame(step)
-}
 
 export function Navbar() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState<boolean>(false)
 
-  function handleNav(href: string) {
+  function handleNav(href: string): void {
     setOpen(false)
     scrollToSection(href)
   }
@@ -59,11 +36,20 @@ export function Navbar() {
       <Container>
         <div className="flex items-center justify-between gap-4">
           <button
-            className="h-8 w-8 bg-foreground"
+            className="relative h-8 w-8 bg-foreground"
             onClick={() => handleNav("home")}
-          />
+            aria-label="Go to top"
+          >
+            <Image
+              src="/logo.webp"
+              alt="Simon Zangerl — Portfolio home"
+              width={32}
+              height={32}
+              className="invert-0 dark:invert"
+            />
+          </button>
 
-          <div className="group hidden md:flex">
+          <nav aria-label="Main navigation" className="group hidden lg:flex">
             {items.map((item) => (
               <button
                 key={item.label}
@@ -73,18 +59,21 @@ export function Navbar() {
                 {item.label}
               </button>
             ))}
-          </div>
+          </nav>
 
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <ThemeToggle />
           </div>
 
           <button
-            className="relative h-[2rem] w-[2rem] md:hidden"
+            className="relative h-[2rem] w-[2rem] lg:hidden"
             onClick={() => setOpen((v) => !v)}
-            aria-label="Toggle menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
           >
             <span
+              aria-hidden="true"
               className={`absolute inset-0 transition-all duration-200 ${
                 open ? "scale-100 opacity-100" : "scale-75 opacity-0"
               }`}
@@ -92,6 +81,7 @@ export function Navbar() {
               <IconX size="2rem" />
             </span>
             <span
+              aria-hidden="true"
               className={`absolute inset-0 transition-all duration-200 ${
                 open ? "scale-75 opacity-0" : "scale-100 opacity-100"
               }`}
@@ -103,14 +93,16 @@ export function Navbar() {
       </Container>
 
       <div
-        className="overflow-hidden transition-all duration-300 ease-in-out md:hidden"
+        id="mobile-nav"
+        className="overflow-hidden transition-all duration-300 ease-in-out lg:hidden"
+        aria-hidden={!open}
         style={{
           height: open ? "calc(100dvh - 4rem)" : 0,
           opacity: open ? 1 : 0,
         }}
       >
         <Container>
-          <nav className="flex flex-col py-2">
+          <nav aria-label="Mobile navigation" className="flex flex-col py-2">
             {items.map((item, i) => (
               <button
                 key={item.label}
