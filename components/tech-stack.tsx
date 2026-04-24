@@ -2,8 +2,15 @@
 
 import { useRef, useEffect, useState, useCallback } from "react"
 import Image from "next/image"
-import { IconArrowUpRight } from "@tabler/icons-react"
 import { cn } from "@/lib/utils"
+
+type Level = "expert" | "proficient" | "familiar" | "exploring"
+
+type TechItem = {
+  label: string
+  level: Level
+  years: number
+}
 
 type TechData = {
   name: string
@@ -14,7 +21,7 @@ type TechData = {
     invert?: boolean
     className?: string
   }
-  items: { label: string; href: string }[]
+  items: TechItem[]
 }
 
 const data: TechData[] = [
@@ -27,35 +34,35 @@ const data: TechData[] = [
       className: "h-36 w-36 sm:h-48 sm:w-48 lg:h-64 lg:w-64",
     },
     items: [
-      { label: "TypeScript", href: "https://www.typescriptlang.org/" },
-      { label: "Next.js", href: "https://nextjs.org/" },
-      { label: "React", href: "https://react.dev/" },
-      { label: "Playwright", href: "https://playwright.dev/" },
-      { label: "Jest", href: "https://jestjs.io/" },
-      { label: "Tailwind", href: "https://tailwindcss.com/" },
-      { label: "Zod", href: "https://zod.dev/" },
-      { label: "Prisma", href: "https://www.prisma.io/orm" },
-      { label: "shadcn", href: "https://ui.shadcn.com/" },
-      { label: "Express", href: "https://expressjs.com/" },
-      { label: "Next-intl", href: "https://next-intl.dev/" },
-      { label: "Mantine", href: "https://mantine.dev/" },
-      { label: "ai SDK", href: "https://ai-sdk.dev/" },
-      { label: "Motion", href: "https://motion.dev/" },
+      { label: "TypeScript", level: "expert", years: 6 },
+      { label: "Next.js", level: "expert", years: 4 },
+      { label: "React", level: "expert", years: 5 },
+      { label: "Playwright", level: "proficient", years: 2 },
+      { label: "Jest", level: "proficient", years: 4 },
+      { label: "Tailwind", level: "expert", years: 4 },
+      { label: "Zod", level: "proficient", years: 3 },
+      { label: "Prisma", level: "proficient", years: 2 },
+      { label: "shadcn", level: "proficient", years: 2 },
+      { label: "Express", level: "proficient", years: 7 },
+      { label: "Next-intl", level: "expert", years: 3 },
+      { label: "Mantine", level: "expert", years: 4 },
+      { label: "ai SDK", level: "exploring", years: 1 },
+      { label: "Motion", level: "exploring", years: 1 },
     ],
   },
   {
     name: "Python",
     image: { src: "/python.svg", height: 256, width: 256 },
     items: [
-      { label: "Pydantic", href: "https://docs.pydantic.dev/latest/" },
-      { label: "psycopg", href: "https://www.psycopg.org/" },
-      { label: "Flask", href: "https://flask.palletsprojects.com/en/stable/" },
-      { label: "gunicorn", href: "https://gunicorn.org/" },
-      { label: "Pandas", href: "https://pandas.pydata.org/" },
-      { label: "Numpy", href: "https://numpy.org/" },
-      { label: "Matplotlib", href: "https://matplotlib.org/" },
-      { label: "Seaborn", href: "https://seaborn.pydata.org/" },
-      { label: "Pika", href: "https://pika.readthedocs.io/en/stable/" },
+      { label: "Pydantic", level: "proficient", years: 2 },
+      { label: "psycopg", level: "proficient", years: 3 },
+      { label: "Flask", level: "proficient", years: 3 },
+      { label: "gunicorn", level: "familiar", years: 1 },
+      { label: "Pandas", level: "proficient", years: 6 },
+      { label: "Numpy", level: "proficient", years: 6 },
+      { label: "Matplotlib", level: "familiar", years: 3 },
+      { label: "Seaborn", level: "familiar", years: 3 },
+      { label: "Pika", level: "familiar", years: 1 },
     ],
   },
   {
@@ -66,25 +73,22 @@ const data: TechData[] = [
       width: 512,
     },
     items: [
-      { label: "C#", href: "https://learn.microsoft.com/en-us/dotnet/csharp/" },
-      { label: ".NET", href: "https://dotnet.microsoft.com/" },
-      { label: "ASP.NET Core", href: "https://dotnet.microsoft.com/en-us/apps/aspnet" },
-      { label: "SignalR", href: "https://dotnet.microsoft.com/en-us/apps/aspnet/signalr" },
-      { label: "xUnit", href: "https://xunit.net/" },
+      { label: "C#", level: "proficient", years: 2 },
+      { label: ".NET", level: "proficient", years: 2 },
+      { label: "ASP.NET Core", level: "proficient", years: 2 },
+      { label: "SignalR", level: "familiar", years: 1 },
+      { label: "xUnit", level: "proficient", years: 2 },
     ],
   },
   {
     name: "Databases",
     image: { src: "/postgres-dark.svg", height: 298, width: 298, invert: true },
     items: [
-      { label: "Postgres", href: "https://www.postgresql.org/" },
-      { label: "MySQL", href: "https://www.mysql.com/" },
-      { label: "MariaDB", href: "https://mariadb.org/" },
-      {
-        label: "Microsoft SQL Server",
-        href: "https://www.microsoft.com/en/sql-server",
-      },
-      { label: "MongoDB", href: "https://www.mongodb.com/" },
+      { label: "Postgres", level: "proficient", years: 2 },
+      { label: "MySQL", level: "proficient", years: 4 },
+      { label: "MariaDB", level: "proficient", years: 7 },
+      { label: "Microsoft SQL Server", level: "proficient", years: 4 },
+      { label: "MongoDB", level: "proficient", years: 3 },
     ],
   },
 
@@ -97,28 +101,22 @@ const data: TechData[] = [
       className: "h-36 w-36 sm:h-48 sm:w-48 lg:h-64 lg:w-64",
     },
     items: [
-      { label: "Figma", href: "https://www.figma.com" },
-      { label: "Linux", href: "https://github.com/torvalds/linux" },
-      { label: "Docker", href: "https://www.docker.com/" },
-      { label: "Vercel", href: "https://vercel.com/" },
-      { label: "Supabase", href: "https://supabase.com/" },
-      { label: "Amazon Web Services", href: "https://aws.amazon.com/" },
-      { label: "Github", href: "https://github.com/" },
-      { label: "Jira", href: "https://www.atlassian.com/software/jira" },
-      {
-        label: "Confluence",
-        href: "https://www.atlassian.com/software/confluence",
-      },
-      { label: "Bitbucket", href: "https://bitbucket.org/product/" },
-      { label: "RabbitMQ", href: "https://www.rabbitmq.com/" },
-      { label: "Qlik Sense", href: "https://www.qlik.com/us" },
-      { label: "Zitadel", href: "https://zitadel.com/" },
-      { label: "Auth0", href: "https://auth0.com/" },
-      {
-        label: "Microsoft Dynamics 365",
-        href: "https://www.microsoft.com/en/dynamics-365",
-      },
-      { label: "Mailchimp", href: "https://mailchimp.com/" },
+      { label: "Figma", level: "proficient", years: 5 },
+      { label: "Linux", level: "proficient", years: 5 },
+      { label: "Docker", level: "proficient", years: 4 },
+      { label: "Vercel", level: "proficient", years: 2 },
+      { label: "Supabase", level: "familiar", years: 1 },
+      { label: "Amazon Web Services", level: "familiar", years: 3 },
+      { label: "Github", level: "proficient", years: 6 },
+      { label: "Jira", level: "proficient", years: 4 },
+      { label: "Confluence", level: "proficient", years: 4 },
+      { label: "Bitbucket", level: "proficient", years: 4 },
+      { label: "RabbitMQ", level: "familiar", years: 2 },
+      { label: "Qlik Sense", level: "expert", years: 4 },
+      { label: "Zitadel", level: "familiar", years: 1 },
+      { label: "Auth0", level: "proficient", years: 3 },
+      { label: "Microsoft Dynamics 365", level: "familiar", years: 3 },
+      { label: "Mailchimp", level: "familiar", years: 3 },
     ],
   },
 ]
@@ -132,21 +130,26 @@ type GroupLayout = {
 
 function ItemsList({ group }: { group: number }) {
   return (
-    <div className="group/parent mr-8 ml-16 flex flex-col gap-2 pt-20 lg:gap-6">
+    <div className="group/parent mr-8 ml-16 flex flex-col gap-3 pt-20 lg:gap-6">
       {data[group].items.map((item, i) => (
-        <a
+        <div
           key={i}
-          className="group/item flex cursor-pointer items-center gap-3 font-heading text-3xl text-foreground transition-all group-hover/parent:text-muted hover:text-foreground lg:text-6xl"
-          href={item.href}
-          target="_blank"
-          rel="noopener noreferrer"
+          className="group/item flex items-center gap-4 font-heading text-3xl text-foreground transition-all group-hover/parent:text-muted hover:text-foreground lg:text-6xl"
         >
-          {item.label}
-          <IconArrowUpRight
-            size="3rem"
-            className="group-hover/item:opacity-100 lg:opacity-0"
-          />
-        </a>
+          <span className="leading">{item.label}</span>
+          <span
+            aria-hidden
+            className="flex items-center gap-2 font-sans text-xs leading-none tracking-widest text-muted-foreground uppercase opacity-0 transition-opacity duration-200 group-hover/item:opacity-100 lg:text-sm"
+          >
+            <span className="h-px w-6 bg-muted-foreground/60" />
+            <span>{item.level}</span>
+            <span className="text-muted-foreground/50">·</span>
+            <span className="tabular-nums">
+              {item.years}
+              {item.years === 1 ? " year" : " years"}
+            </span>
+          </span>
+        </div>
       ))}
     </div>
   )
