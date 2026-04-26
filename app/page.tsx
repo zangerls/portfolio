@@ -1,19 +1,38 @@
-import { Button } from "@/components/ui/button"
+import { About } from "@/components/about"
+import { Certifications } from "@/components/certifications"
+import { Contact } from "@/components/contact"
+import { Container } from "@/components/container"
+import { Crosshair } from "@/components/crosshair"
+import { Experience } from "@/components/experience"
+import { Footer } from "@/components/footer"
+import { Hero } from "@/components/hero"
+import { Portfolio } from "@/components/portfolio"
+import { TechStack } from "@/components/tech-stack"
 
 export default function Page() {
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
+    <main>
+      <Hero />
+      <About />
+      <Experience />
+      <Portfolio />
+
+      <TechStack />
+
+      <Container>
+        <div aria-hidden="true" className="relative h-8 border-x">
+          <Crosshair position="top-left" />
         </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
+      </Container>
+      <div aria-hidden="true" className="border-t" />
+      <Certifications />
+      <Container>
+        <div aria-hidden="true" className="relative h-8 border-x">
+          <Crosshair position="bottom-right" />
         </div>
-      </div>
-    </div>
+      </Container>
+      <Contact />
+      <Footer />
+    </main>
   )
 }
