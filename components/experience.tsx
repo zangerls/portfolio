@@ -5,49 +5,12 @@ import { Container } from "./container"
 import { EncryptedText } from "./ui/encrypted-text"
 import { Separator } from "./ui/separator"
 import { Crosshair } from "./crosshair"
+import { useTranslations } from "next-intl"
 
 type Task = {
   label: string
   description: string
 }
-
-const tasks: Task[] = [
-  {
-    label: "Built next-gen product from scratch",
-    description:
-      "Researched options to reinvent core product, prototyped a standalone web app integrating Qlik Sense. Got approval, then solo-built a full Next.js application that replaced the company's legacy Qlik dashboard product. Company pivoted from on-prem to SaaS on the back of this.",
-  },
-  {
-    label: "End-to-end ownership",
-    description:
-      "Sole developer responsible for architecture, frontend, backend, database design, auth, deployment and the network layer between Qlik and the web app. Took ownership of a key result for two consecutive OKR cycles.",
-  },
-  {
-    label: "Enterprise operations & client projects",
-    description:
-      "Maintained and developed business intelligence solutions for major theatres and opera houses across Austria, Germany, and Switzerland. Handled feature requests, custom builds, performance optimizations, troubleshooting, and on-call incident response for production outages.",
-  },
-  {
-    label: "Data pipeline development",
-    description:
-      "Built, maintained, and monitored ETL pipelines from scratch. Maintained legacy pipeline integrations during transition period and helped in the major refactor of legacy Java monolith architecture to modern Python microservices to streamline future projects and enable real-time data synchronization.",
-  },
-  {
-    label: "Product features post-launch",
-    description:
-      "Designed and built a new product for our clients to tailor their dashboard application without the reliance on our consultants, a report builder (custom dashboards with persistence, publishing, cross-user sharing) and an email scheduling engine (configurable recipients, schedules, templated dashboard snapshots).",
-  },
-  {
-    label: "Client-facing consulting",
-    description:
-      "Led customer meetings for pipeline integrations, advised on CRM system integrations with partners and handled onboarding and demos for the new product.",
-  },
-  {
-    label: "Design & UX",
-    description:
-      "Owned all product design decisions, replacing dense multi-dashboard Qlik apps with a cleaner, more focused UI.",
-  },
-]
 
 type ListItemProps = {
   label: string
@@ -75,30 +38,62 @@ function ListItem({ label, index, setHovered }: ListItemProps) {
 }
 
 export function Experience() {
+  const t = useTranslations("Experience")
   const [hoveredIndex, setHoveredIndex] = useState<number>(-1)
+
+  const tasks: Task[] = [
+    {
+      label: t("kulturplanner.tasks.nextGen.title"),
+      description: t("kulturplanner.tasks.nextGen.description"),
+    },
+    {
+      label: t("kulturplanner.tasks.e2e.title"),
+      description: t("kulturplanner.tasks.e2e.description"),
+    },
+    {
+      label: t("kulturplanner.tasks.enterprise.title"),
+      description: t("kulturplanner.tasks.enterprise.description"),
+    },
+    {
+      label: t("kulturplanner.tasks.pipelines.title"),
+      description: t("kulturplanner.tasks.pipelines.description"),
+    },
+    {
+      label: t("kulturplanner.tasks.features.title"),
+      description: t("kulturplanner.tasks.features.description"),
+    },
+    {
+      label: t("kulturplanner.tasks.consulting.title"),
+      description: t("kulturplanner.tasks.consulting.description"),
+    },
+    {
+      label: t("kulturplanner.tasks.design.title"),
+      description: t("kulturplanner.tasks.design.description"),
+    },
+  ]
 
   return (
     <Container>
       <section
         id="experience"
-        aria-label="Experience"
+        aria-label={t("title")}
         className="grid grid-cols-1 divide-x border border-b-0 lg:grid-cols-3"
       >
         <div className="relative col-span-1 p-4 lg:col-span-2 lg:p-12">
           <Crosshair position="top-left" />
           <h2 className="font-heading text-2xl font-bold lg:text-4xl">
-            Fullstack Engineer
+            {t("kulturplanner.role")}
           </h2>
           <div className="mt-2 flex items-center gap-2 lg:gap-4">
             <p className="text-sm text-muted-foreground lg:text-xl">
-              at Kulturplanner
+              {t("kulturplanner.atCompany")}
             </p>
             <Separator
               className="border-1 border-muted"
               orientation="vertical"
             />
             <p className="text-sm text-muted-foreground lg:text-xl">
-              2022 - Current
+              {t("kulturplanner.fromTo")}
             </p>
           </div>
           <ul className="group/list mt-2 lg:mt-8">
@@ -117,7 +112,7 @@ export function Experience() {
           <p className="text-sm lg:text-xl">
             {hoveredIndex < 0 ? (
               <span className="text-muted-foreground">
-                Click or hover task to see details
+                {t("showDescription")}
               </span>
             ) : (
               <EncryptedText

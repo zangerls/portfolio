@@ -1,5 +1,183 @@
 {
-    "Hero": {
-        "title": "Hello world"
+  "About": {
+    "title": "About",
+    "sections": {
+      "purist": {
+        "title": "Purist at Heart",
+        "description": "I fell in love with software young. Spending hours on the family computer, setting up local game servers with friends, writing scripts and customizing everything there is. That obsession led me to SZU Ungargasse in Vienna, where I obtained my degree in engineering by diving into every field under the sun. Between CNC machines, building a miniature piston engine, electrical engineering, CAD, applied maths, business, software development, I am still the same software-obsessed kid who just loves building things and solving any problem."
+      },
+      "jack": {
+        "title": "Jack of All Trades",
+        "description": "Spending the early years of my career at a small company was the best thing that could've ever happened to me. A bit of everything landed on my plate: client consulting, maintaining existing pipelines, network configs, database design, UI/UX and building entirely new products from scratch handling everything from start to finish. All of which I worked out myself, with the docs open, step by step. That stretch is where I learned how I work best: Pick up whatever the problem needs, no excuses, because every problem has a solution waiting to be figured out."
+      },
+      "future": {
+        "title": "Future Proof",
+        "description": "I follow the industry as closely as I can. New frameworks, architectural shifts, or where AI is actually heading - not to chase any trends, but because staying informed is non-negotiable when your job is to make good decisions. Clean abstractions, maintainable code, systems built to last without over-engineering for the unknown future. But what I've always been most proud of is simpler: I take on every challenge, every problem, every task. Not because I know everything - trust me, I don't - but because figuring things out under pressure is where I shine."
+      }
+    },
+    "letterX": "Letter {char}"
+  },
+  "Certifications": {
+    "title": "Certifications",
+    "certificates": {
+      "google": {
+        "title": "Google Data Analytics",
+        "description": "Passed in June 2021"
+      },
+      "qlik": {
+        "title": "Qlik Sense Data Architecture Masterclass",
+        "description": "Passed in June 2022"
+      },
+      "ebcl": {
+        "title": "European Business Competence* Licence",
+        "description": "Passed both level A and B in 2018 and 2019 respectively"
+      },
+      "cambridge": {
+        "title": "Cambridge Assessment | Business Vantage C1",
+        "description": "Passed with distinction in December 2018"
+      },
+      "szu": {
+        "title": "Engineering Degree in Computer Science and Industrial Management",
+        "description": "Graduated with distinction in May 2021"
+      },
+      "sap": {
+        "title": "SAP (Enterprise Resource Planning) Certification",
+        "description": "Passed in January 2021"
+      }
+    },
+    "playButtons": {
+      "resume": "Resume",
+      "pause": "Pause",
+      "next": "Next certification"
+    },
+    "matrix": {
+      "tile": {
+        "ariaLabel": "View {certificate}"
+      }
     }
+  },
+  "Contact": {
+    "title": "Get In Touch",
+    "contactPoints": {
+      "github": "Github",
+      "linkedIn": "LinkedIn",
+      "location": "Vienna, Austria"
+    }
+  },
+  "Experience": {
+    "title": "Experience",
+    "kulturplanner": {
+      "role": "Fullstack Engineer",
+      "atCompany": "at Kulturplanner",
+      "fromTo": "2022 - Current",
+      "tasks": {
+        "nextGen": {
+          "title": "Built next-gen product from scratch",
+          "description": "Researched options to reinvent core product, prototyped a standalone web app integrating Qlik Sense. Got approval, then solo-built a full Next.js application that replaced the company's legacy Qlik dashboard product. Company pivoted from on-prem to SaaS on the back of this."
+        },
+        "e2e": {
+          "title": "End-to-end ownership",
+          "description": "Sole developer responsible for architecture, frontend, backend, database design, auth, deployment and the network layer between Qlik and the web app. Took ownership of a key result for two consecutive OKR cycles."
+        },
+        "enterprise": {
+          "title": "Enterprise operations & client projects",
+          "description": "Maintained and developed business intelligence solutions for major theatres and opera houses across Austria, Germany, and Switzerland. Handled feature requests, custom builds, performance optimizations, troubleshooting, and on-call incident response for production outages."
+        },
+        "pipelines": {
+          "title": "Data pipeline development",
+          "description": "Built, maintained, and monitored ETL pipelines from scratch. Maintained legacy pipeline integrations during transition period and helped in the major refactor of legacy Java monolith architecture to modern Python microservices to streamline future projects and enable real-time data synchronization."
+        },
+        "features": {
+          "title": "Product features post-launch",
+          "description": "Designed and built a new product for our clients to tailor their dashboard application without the reliance on our consultants, a report builder (custom dashboards with persistence, publishing, cross-user sharing) and an email scheduling engine (configurable recipients, schedules, templated dashboard snapshots)."
+        },
+        "consulting": {
+          "title": "Client-facing consulting",
+          "description": "Led customer meetings for pipeline integrations, advised on CRM system integrations with partners and handled onboarding and demos for the new product."
+        },
+        "design": {
+          "title": "Design & UI",
+          "description": "Owned all product design decisions, replacing dense multi-dashboard Qlik apps with a cleaner, more focused UI."
+        }
+      }
+    },
+    "showDescription": "Click or hover to see details"
+  },
+  "Footer": {
+    "navigation": { "title": "Navigation", "aria": "Footer navigation" },
+    "contact": "Get In Touch",
+    "profileNewTab": "{platform} profile (opens in a new tab)"
+  },
+  "Hero": {
+    "title": {
+      "intro": "Hi, I am",
+      "name": "Simon Zangerl"
+    },
+    "badge": "Available for work"
+  },
+  "Navbar": {
+    "items": {
+      "about": "About",
+      "experience": "Experience",
+      "projects": "Projects",
+      "techStack": "Tech Stack",
+      "certifications": "Certifications",
+      "contact": "Get In Touch"
+    },
+    "goToTop": "Go to top",
+    "logo": {
+      "alt": "Simon Zangerl - Portfolio Home"
+    },
+    "navAria": "Main navigation",
+    "mobileNavAria": "Mobile navigation",
+    "hamburger": {
+      "open": "Open menu",
+      "close": "Close menu"
+    }
+  },
+  "Portfolio": {
+    "title": "Projects",
+    "viewDetailsFor": "View details for {title}",
+    "tap": "Tap",
+    "visit": "Visit",
+    "source": "Source",
+    "projects": {
+      "goingInCircles": {
+        "title": "Going in Circles",
+        "description": "How many albums separate your favourite artists?"
+      },
+      "mozartle": {
+        "title": "Mozartle",
+        "description": "Guess today's opera in six guesses or fewer"
+      },
+      "skipBo": {
+        "title": "Skip Bo",
+        "description": "Play the childhood classic online"
+      },
+      "darinela": {
+        "title": "Darinela Vangelova",
+        "description": "Personal website of Bulgarian opera singer Darinela Vangelova"
+      },
+      "simon": {
+        "title": "Simon Zangerl",
+        "description": "I hope you enjoy it so far"
+      }
+    }
+  },
+  "TechStack": {
+    "pluralizationYears": "{years, plural, =0 {None} =1 {1 year} other {# years}}",
+    "proficiency": {
+      "exploring": "Exploring",
+      "familiar": "Familiar",
+      "proficient": "Proficient",
+      "expert": "Expert"
+    }
+  },
+  "ThemeToggle": {
+    "aria": {
+      "toggleDark": "Toggle dark-mode",
+      "toggleLight": "Toggle light-mode",
+      "root": "Toggle color scheme"
+    }
+  }
 }

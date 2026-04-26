@@ -2,6 +2,7 @@ import Image from "next/image"
 import { IconArrowUpRight } from "@tabler/icons-react"
 import { Container } from "./container"
 import { CursorDrivenParticleTypography } from "./ui/cursor-driven-particle-typography"
+import { getTranslations } from "next-intl/server"
 
 type ContactPoint = {
   name: string
@@ -12,46 +13,47 @@ type ContactPoint = {
   href?: string
 }
 
-const contactPoints: ContactPoint[] = [
-  {
-    name: "Github",
-    href: "https://github.com/zangerls",
-    image: {
-      src: "github.svg",
-      alt: "Github logo",
+export async function Contact() {
+  const t = await getTranslations("Contact")
+  const contactPoints: ContactPoint[] = [
+    {
+      name: t("contactPoints.github"),
+      href: "https://github.com/zangerls",
+      image: {
+        src: "github.svg",
+        alt: `${t("contactPoints.github")} Logo`,
+      },
     },
-  },
-  {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/in/szangerl/",
-    image: {
-      src: "/linkedin.webp",
-      alt: "LinkedIn logo",
+    {
+      name: t("contactPoints.linkedIn"),
+      href: "https://www.linkedin.com/in/szangerl/",
+      image: {
+        src: "/linkedin.webp",
+        alt: `${t("contactPoints.linkedIn")} Logo`,
+      },
     },
-  },
-  {
-    name: "Vienna, Austria",
-    image: {
-      src: "map-pin.svg",
-      alt: "Location icon",
+    {
+      name: t("contactPoints.location"),
+      image: {
+        src: "map-pin.svg",
+        alt: t("contactPoints.location"),
+      },
     },
-  },
-]
+  ]
 
-export function Contact() {
   return (
     <section
       id="get-in-touch"
-      aria-label="Get In Touch"
+      aria-label={t("title")}
       className="w-full border-t"
     >
       <Container>
         <div className="grid grid-cols-1 divide-y border-x md:h-[50vh] md:grid-cols-2 md:divide-x md:divide-y-0">
           <div className="col-span-1 flex items-center justify-center p-6 py-12 md:p-10">
             <div className="relative w-full">
-              <h2 className="sr-only">Get In Touch</h2>
+              <h2 className="sr-only">{t("title")}</h2>
               <CursorDrivenParticleTypography
-                text="GET IN TOUCH"
+                text={t("title").toUpperCase()}
                 particleDensity={2}
                 particleSize={1}
                 fontSize={70}

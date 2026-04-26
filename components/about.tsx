@@ -5,58 +5,24 @@ import { Container } from "./container"
 import { Crosshair, type CrosshairProps } from "./crosshair"
 import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
+import { useLocale, useTranslations } from "next-intl"
 
 type AboutCardProps = {
   label: string
   description: string
   image: {
-    src: string
-    alt: string
+    de: {
+      src: string
+      alt: string
+    }
+    en: {
+      src: string
+      alt: string
+    }
   }
   crosshair?: CrosshairProps["position"]
   index: number
 }
-
-const cards: AboutCardProps[] = [
-  {
-    label: "Purist at Heart",
-    description: `I fell in love with software young. Spending hours on the family computer, setting up local game servers with friends, writing scripts and customizing everything there is.
-      That obsession led me to SZU Ungargasse in Vienna, where I obtained my degree in engineering by diving into every field under the sun.
-      Between CNC machines, building a miniature piston engine, electrical engineering, CAD, applied maths, business, software development,
-      I am still the same software-obsessed kid who just loves building things and solving any problem.`,
-    image: {
-      src: "P.svg",
-      alt: "Letter P",
-    },
-    crosshair: "top-left",
-    index: 1,
-  },
-  {
-    label: "Jack of All Trades",
-    description: `Spending the early years of my career at a small company was the best thing that could've ever happened to me.
-      A bit of everything landed on my plate: client consulting, maintaining existing pipelines, network configs, database design, UI/UX and building entirely new products from scratch handling everything from start to finish.
-      All of which I worked out myself, with the docs open, step by step. That stretch is where I learned how I work best:
-      Pick up whatever the problem needs, no excuses, because every problem has a solution waiting to be figured out.`,
-    image: {
-      src: "J.svg",
-      alt: "Letter J",
-    },
-    crosshair: "bottom-left",
-    index: 2,
-  },
-  {
-    label: "Future Proof",
-    description: `I follow the industry as closely as I can.
-      New frameworks, architectural shifts, or where AI is actually heading - not to chase any trends, but because staying informed is non-negotiable when your job is to make good decisions.
-      Clean abstractions, maintainable code, systems built to last without over-engineering for the unknown future. But what I've always been most proud of is simpler: I take on every challenge, every problem, every task. Not because I know everything - trust me, I don't - but because figuring things out under pressure is where I shine.`,
-    image: {
-      src: "F.svg",
-      alt: "Letter F",
-    },
-    crosshair: "top-left",
-    index: 3,
-  },
-]
 
 function AboutCard({
   label,
@@ -65,6 +31,7 @@ function AboutCard({
   crosshair,
   index,
 }: AboutCardProps) {
+  const locale = useLocale()
   const { theme } = useTheme()
   const num = index.toString().padStart(2, "0")
 
@@ -87,10 +54,10 @@ function AboutCard({
 
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-8 transition-opacity duration-300 group-hover:opacity-0">
           <Image
-            src={image.src}
+            src={image[locale].src}
             height={100}
             width={100}
-            alt=""
+            alt={image[locale].alt}
             className={cn(
               "h-[100px] w-auto",
               theme === "light" ? "invert" : ""
@@ -113,11 +80,64 @@ function AboutCard({
 }
 
 export function About() {
+  const t = useTranslations("About")
+  const cards: AboutCardProps[] = [
+    {
+      label: t("sections.purist.title"),
+      description: t("sections.purist.description"),
+      image: {
+        en: {
+          src: "P.svg",
+          alt: t("letterX", { char: "P" }),
+        },
+        de: {
+          src: "P.svg",
+          alt: t("letterX", { char: "P" }),
+        },
+      },
+
+      crosshair: "top-left",
+      index: 1,
+    },
+    {
+      label: t("sections.jack.title"),
+      description: t("sections.jack.description"),
+      image: {
+        en: {
+          src: "J.svg",
+          alt: t("letterX", { char: "J" }),
+        },
+        de: {
+          src: "A.svg",
+          alt: t("letterX", { char: "A" }),
+        },
+      },
+      crosshair: "bottom-left",
+      index: 2,
+    },
+    {
+      label: t("sections.future.title"),
+      description: t("sections.future.description"),
+      image: {
+        en: {
+          src: "F.svg",
+          alt: t("letterX", { char: "F" }),
+        },
+        de: {
+          src: "Z.svg",
+          alt: t("letterX", { char: "Z" }),
+        },
+      },
+      crosshair: "top-left",
+      index: 3,
+    },
+  ]
+
   return (
     <Container>
       <section
         id="about"
-        aria-label="About"
+        aria-label={t("title")}
         className="grid grid-cols-1 divide-y border-x border-t lg:h-170 lg:grid-cols-3 lg:divide-x lg:divide-y-0"
       >
         {cards.map((card) => (

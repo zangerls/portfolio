@@ -7,29 +7,30 @@ import { ThemeToggle } from "./theme-toggle"
 import { Separator } from "./ui/separator"
 import Image from "next/image"
 import { scrollToSection } from "@/lib/utils"
+import { useTranslations } from "next-intl"
 
 type NavbarItem = {
   label: string
   href: string
 }
 
-const items: NavbarItem[] = [
-  { label: "About", href: "about" },
-  { label: "Experience", href: "experience" },
-  { label: "Projects", href: "projects" },
-  { label: "Tech Stack", href: "tech-stack" },
-  { label: "Certifications", href: "certifications" },
-  { label: "Get In Touch", href: "get-in-touch" },
-]
-
-
 export function Navbar() {
+  const t = useTranslations("Navbar")
   const [open, setOpen] = useState<boolean>(false)
 
   function handleNav(href: string): void {
     setOpen(false)
     scrollToSection(href)
   }
+
+  const items: NavbarItem[] = [
+    { label: t("items.about"), href: "about" },
+    { label: t("items.experience"), href: "experience" },
+    { label: t("items.projects"), href: "projects" },
+    { label: t("items.techStack"), href: "tech-stack" },
+    { label: t("items.certifications"), href: "certifications" },
+    { label: t("items.contact"), href: "get-in-touch" },
+  ]
 
   return (
     <header className="fixed z-10 w-full border-b bg-linear-to-t from-background/60 to-background py-4 backdrop-blur-lg">
@@ -38,18 +39,18 @@ export function Navbar() {
           <button
             className="relative h-8 w-8 bg-foreground"
             onClick={() => handleNav("home")}
-            aria-label="Go to top"
+            aria-label={t("goToTop")}
           >
             <Image
               src="/logo.webp"
-              alt="Simon Zangerl — Portfolio home"
+              alt={t("logo.alt")}
               width={32}
               height={32}
               className="invert-0 dark:invert"
             />
           </button>
 
-          <nav aria-label="Main navigation" className="group hidden lg:flex">
+          <nav aria-label={t("navAria")} className="group hidden lg:flex">
             {items.map((item) => (
               <button
                 key={item.label}
@@ -68,7 +69,7 @@ export function Navbar() {
           <button
             className="relative h-[2rem] w-[2rem] lg:hidden"
             onClick={() => setOpen((v) => !v)}
-            aria-label={open ? "Close menu" : "Open menu"}
+            aria-label={open ? t("hamburger.close") : t("hamburger.open")}
             aria-expanded={open}
             aria-controls="mobile-nav"
           >
@@ -102,7 +103,7 @@ export function Navbar() {
         }}
       >
         <Container>
-          <nav aria-label="Mobile navigation" className="flex flex-col py-2">
+          <nav aria-label={t("mobileNavAria")} className="flex flex-col py-2">
             {items.map((item, i) => (
               <button
                 key={item.label}

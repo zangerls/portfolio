@@ -5,6 +5,7 @@ import { StickyCard_001 } from "./ui/skiper-ui/skiper16"
 import { useRef, useState } from "react"
 import { Container } from "./container"
 import { Crosshair } from "./crosshair"
+import { useTranslations } from "next-intl"
 
 type Project = {
   src: string
@@ -15,57 +16,58 @@ type Project = {
   href?: string
 }
 
-const projects: Project[] = [
-  {
-    src: "/going-in-circles.webp",
-    title: "Going in Circles",
-    description: "How many albums separate your favourite artists?",
-    github: "https://github.com/zangerls/going-in-circles",
-    techStack: ["Next.js", "shadcn", "motion", "Spotify Web API"],
-  },
-  {
-    src: "/mozartle.webp",
-    title: "Mozartle",
-    description: "Guess today's opera in six guesses or fewer",
-    github: "https://github.com/zangerls/mozartle",
-    href: "https://mozartle.com",
-    techStack: ["Next.js", "Vercel", "Postgres", "Supabase", "Prisma"],
-  },
-  {
-    src: "/skipbo.webp",
-    title: "Skip Bo",
-    description: "Play the childhood classic online",
-    github: "https://github.com/zangerls/skipbo",
-    techStack: [".NET", "ASP.NET Core"],
-  },
-  {
-    src: "/darinela.webp",
-    title: "Darinela Vangelova",
-    description:
-      "Personal website of Bulgarian opera singer Darinela Vangelova",
-    github: "https://github.com/zangerls/dv",
-    href: "https://darinela.com",
-    techStack: ["Next.js", "Vercel", "shadcn"],
-  },
-  {
-    src: "/web-app-manifest-512x512.png",
-    title: "Simon Zangerl",
-    description: "I hope you enjoy it so far",
-    github: "https://github.com/zangerls/portfolio",
-    href: "https://simon-zangerl.com",
-    techStack: ["Next.js", "Vercel", "shadcn", "motion"],
-  },
-]
-
 export function Portfolio() {
+  const t = useTranslations("Portfolio")
   const container = useRef<HTMLDivElement | null>(null)
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start start", "end end"],
   })
+
+  const projects: Project[] = [
+    {
+      src: "/going-in-circles.webp",
+      title: t("projects.goingInCircles.title"),
+      description: t("projects.goingInCircles.description"),
+      github: "https://github.com/zangerls/going-in-circles",
+      techStack: ["Next.js", "shadcn", "motion", "Spotify Web API"],
+    },
+    {
+      src: "/mozartle.webp",
+      title: t("projects.mozartle.title"),
+      description: t("projects.mozartle.description"),
+      github: "https://github.com/zangerls/mozartle",
+      href: "https://mozartle.com",
+      techStack: ["Next.js", "Vercel", "Postgres", "Supabase", "Prisma"],
+    },
+    {
+      src: "/skipbo.webp",
+      title: t("projects.skipBo.title"),
+      description: t("projects.skipBo.description"),
+      github: "https://github.com/zangerls/skipbo",
+      techStack: [".NET", "ASP.NET Core", "Figma"],
+    },
+    {
+      src: "/darinela.webp",
+      title: t("projects.darinela.title"),
+      description: t("projects.darinela.description"),
+      github: "https://github.com/zangerls/dv",
+      href: "https://darinela.com",
+      techStack: ["Next.js", "Vercel", "shadcn", "next-intl", "Figma"],
+    },
+    {
+      src: "/web-app-manifest-512x512.png",
+      title: t("projects.simon.title"),
+      description: t("projects.simon.description"),
+      github: "https://github.com/zangerls/portfolio",
+      href: "https://simon-zangerl.com",
+      techStack: ["Next.js", "Vercel", "shadcn", "motion", "Figma"],
+    },
+  ]
+
   return (
-    <section id="projects" aria-label="Projects" ref={container}>
+    <section id="projects" aria-label={t("title")} ref={container}>
       <Container withBorder>
         <div className="relative border-t pb-82 lg:pb-100">
           <Crosshair position="bottom-left" />

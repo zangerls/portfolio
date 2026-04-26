@@ -12,66 +12,76 @@ import { Button } from "./ui/button"
 import { useEffect, useRef, useState } from "react"
 import { Crosshair } from "./crosshair"
 import { Progress } from "./ui/progress"
+import { useFormatter, useTranslations } from "next-intl"
 
-const pseudoMatrix = [
-  undefined,
-  {
-    id: "google",
-    src: "google.svg",
-    name: "Google Data Analytics",
-    description: "Passed in June 2021",
-  },
-  undefined,
-  {
-    id: "qlik",
-    src: "qlik.svg",
-    name: "QlikSense Data Architect Masterclass",
-    description: "Passed in June 2022",
-  },
-  {
-    id: "ebcl",
-    src: "ebcl.svg",
-    name: "European Business Competence* Licence",
-    description: "Passed both level A and B in 2018 and 2019 respectively",
-  },
-  undefined,
-  {
-    id: "cambridge",
-    src: "language.svg",
-    name: "Cambridge Assessment | Business Vantage C1",
-    description: "Passed with distinction in December 2018",
-  },
-  undefined,
-  undefined,
-  {
-    id: "szu",
-    src: "szu.svg",
-    name: "Engineering Degree in Computer Science and Industrial Management",
-    description: "Graduated with distinction in May 2021",
-  },
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  {
-    id: "sap",
-    src: "sap.svg",
-    name: "SAP (Enterprise Resource Planning) Certification",
-    description: "Passed in January 2021",
-  },
-]
-
-const simplifiedCerts = pseudoMatrix.filter((x) => x?.id).map((x) => x!.id)
+type Certification = {
+  id: string
+  src: string
+  name: string
+  description: string
+}
 
 export function Certifications() {
+  const t = useTranslations("Certifications")
+  const format = useFormatter()
   const [certificationId, setCertificationId] = useState<string>("google")
   const [progress, setProgress] = useState<number>(0)
   const [hovered, setHovered] = useState<boolean>(false)
   const startTimeRef = useRef<number>(Date.now())
   const pausedElapsedRef = useRef<number>(0)
 
-  const certification = pseudoMatrix.find((c) => c?.id === certificationId)
+  const pseudoMatrix: (Certification | undefined)[] = [
+    undefined,
+    {
+      id: "google",
+      src: "google.svg",
+      name: t("certificates.google.title"),
+      description: t("certificates.google.description"),
+    },
+    undefined,
+    {
+      id: "qlik",
+      src: "qlik.svg",
+      name: t("certificates.qlik.title"),
+      description: t("certificates.qlik.description"),
+    },
+    {
+      id: "ebcl",
+      src: "ebcl.svg",
+      name: t("certificates.ebcl.title"),
+      description: t("certificates.ebcl.description"),
+    },
+    undefined,
+    {
+      id: "cambridge",
+      src: "language.svg",
+      name: t("certificates.cambridge.title"),
+      description: t("certificates.cambridge.description"),
+    },
+    undefined,
+    undefined,
+    {
+      id: "szu",
+      src: "szu.svg",
+      name: t("certificates.szu.title"),
+      description: t("certificates.szu.description"),
+    },
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    {
+      id: "sap",
+      src: "sap.svg",
+      name: t("certificates.sap.title"),
+      description: t("certificates.sap.description"),
+    },
+  ]
+
+  const simplifiedCerts = pseudoMatrix.filter((x) => x?.id).map((x) => x!.id)
+
+  const certification = pseudoMatrix.find((c) => c?.id === certificationId)!
 
   function resetTimer(nextId?: string) {
     startTimeRef.current = Date.now()
@@ -118,7 +128,7 @@ export function Certifications() {
     <Container>
       <section
         id="certifications"
-        aria-label="Certifications"
+        aria-label={t("title")}
         className="grid grid-cols-1 divide-x border-l lg:grid-cols-3"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
@@ -127,20 +137,20 @@ export function Certifications() {
           <Progress
             value={progress}
             className="absolute bottom-0 left-0 w-full"
-            aria-label={`Certification slideshow progress: ${Math.round(progress)}%`}
+            aria-label={`Certification slideshow progress: ${format.number(progress / 100, { style: "percent", roundingMode: "floor" })}`}
           />
           <Crosshair position="top-right" />
           <h2 className="p-4 font-heading text-xl font-semibold lg:text-3xl">
-            Certifications
+            {t("title")}
           </h2>
           <div className="mx-4 min-h-56 self-center text-center lg:min-h-1">
             <div className="flex items-end justify-center xl:mx-16">
               <p className="font-heading text-2xl font-semibold md:text-3xl xl:text-4xl">
-                {certification?.name}
+                {certification.name}
               </p>
             </div>
             <p className="mx-7 mt-2 text-muted-foreground xl:mx-16">
-              {certification?.description}
+              {certification.description}
             </p>
           </div>
           <div className="flex self-end">
@@ -149,7 +159,9 @@ export function Certifications() {
               variant="ghost"
               className="z-3 lg:hidden"
               onClick={() => setHovered((h) => !h)}
-              aria-label={hovered ? "Resume" : "Pause"}
+              aria-label={
+                hovered ? t("playButtons.resume") : t("playButtons.pause")
+              }
             >
               {hovered ? <IconPlayerPlay /> : <IconPlayerPause />}
             </Button>
@@ -157,7 +169,7 @@ export function Certifications() {
               size="icon-lg"
               className="z-3"
               onClick={handleNext}
-              aria-label="Next certification"
+              aria-label={t("playButtons.next")}
             >
               <IconArrowRight aria-hidden="true" />
             </Button>
@@ -170,7 +182,9 @@ export function Certifications() {
                 <button
                   key={i}
                   onClick={() => resetTimer(element.id)}
-                  aria-label={`View ${element.name}`}
+                  aria-label={t("matrix.tile.ariaLabel", {
+                    certificate: element.name,
+                  })}
                   aria-pressed={element.id === certificationId}
                   className={cn(
                     "cursor-pointer bg-primary/5 hover:bg-primary/10",

@@ -7,6 +7,7 @@ import { Button } from "../button"
 import { Badge } from "../badge"
 import { IconArrowUpRight, IconBrandGithub } from "@tabler/icons-react"
 import { useTheme } from "next-themes"
+import { useTranslations } from "next-intl"
 
 const StickyCard_001 = ({
   i,
@@ -35,6 +36,7 @@ const StickyCard_001 = ({
   tapped: boolean
   onTap: () => void
 }) => {
+  const t = useTranslations("Portfolio")
   const container = useRef<HTMLDivElement>(null)
   const { theme } = useTheme()
   const scale = useTransform(progress, range, [1, targetScale])
@@ -54,7 +56,11 @@ const StickyCard_001 = ({
         role="button"
         tabIndex={0}
         aria-pressed={tapped}
-        aria-label={tapped ? `${title} — ${description}` : `View details for ${title}`}
+        aria-label={
+          tapped
+            ? `${title} — ${description}`
+            : t("viewDetailsFor", { title: title })
+        }
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault()
@@ -74,7 +80,7 @@ const StickyCard_001 = ({
           aria-hidden="true"
           className={`absolute right-3 bottom-3 flex items-center gap-1 bg-black/40 px-2.5 py-1 text-xs text-white/80 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${tapped ? "pointer-events-none opacity-0" : "opacity-100"}`}
         >
-          <span>tap</span>
+          <span>{t("tap")}</span>
         </div>
 
         <div
@@ -110,7 +116,7 @@ const StickyCard_001 = ({
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  Visit
+                  {t("visit")}
                   <IconArrowUpRight />
                 </a>
               </Button>
@@ -125,7 +131,7 @@ const StickyCard_001 = ({
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
               >
-                Source
+                {t("source")}
                 <IconBrandGithub />
               </a>
             </Button>

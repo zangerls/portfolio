@@ -1,5 +1,183 @@
 {
-    "Hero": {
-        "title": "Hallo Welt"
+  "About": {
+    "title": "Über mich",
+    "sections": {
+      "purist": {
+        "title": "Purist im Herzen",
+        "description": "Ich habe mich früh in Software verliebt. Stundenlang am Familien-Computer, Lokale Server mit Freunden aufgesetzt, Skripte geschrieben und alles individuell angepasst. Diese Begeisterung führte mich an die HTL Ungargasse in Wien, wo ich meinen Ingenieurabschluss machte und in jedes vorstellbare Fachgebiet eintauchte. Zwischen CNC-Maschinen, dem Bau eines Miniatur-Kolbenmotors, Elektrotechnik, CAD, angewandter Mathematik, Betriebswirtschaft und Softwareentwicklung bin ich immer noch das gleiche Software-begeisterte Kind wie früher."
+      },
+      "jack": {
+        "title": "Allrounder",
+        "description": "Die ersten Jahre meiner Karriere in einem kleinen Unternehmen zu verbringen, war das Beste, was mir passieren konnte. Denn die unterschiedlichsten Aufgaben landeten auf meinem Tisch: Kundenberatung, Wartung bestehender Pipelines, Netzwerkkonfigurationen, Datenbankdesign, UI/UX und die Entwicklung völlig neuer Produkte von Grund auf - mit Verantwortung von Entwicklung bis Produktion. Während dieser Zeit habe ich gelernt, wie ich am besten arbeite: Jede Aufgabe annehmen - denn jedes Problem hat eine Lösung, die nur darauf wartet, gefunden zu werden."
+      },
+      "future": {
+        "title": "Zukunftssicher",
+        "description": "Ich verfolge die Welt der Software so genau ich kann. Neue Frameworks, architektonische Veränderungen oder wohin sich KI tatsächlich entwickelt - nicht um Trends hinterherzulaufen, sondern weil informiert zu bleiben essenziell ist, wenn der Job darin besteht, gute Entscheidungen zu treffen. Saubere Abstraktionen, wartbarer Code und Systeme, die bis weit in die Zukunft verlässlich agieren. Aber worauf ich immer am stolzesten bin, ist einfacher: Ich nehme jede Herausforderung an. Nicht weil ich alles weiß - ganz im Gegenteil - sondern weil alles gelernt und jedes Problem gelöst werden kann."
+      }
+    },
+    "letterX": "Buchstabe {char}"
+  },
+  "Certifications": {
+    "title": "Zertifizierungen",
+    "certificates": {
+      "google": {
+        "title": "Google Data Analytics",
+        "description": "Bestanden im Juni 2021"
+      },
+      "qlik": {
+        "title": "Qlik Sense Data Architecture Masterclass",
+        "description": "Bestanden im Juni 2022"
+      },
+      "ebcl": {
+        "title": "European Business Competence* Licence",
+        "description": "Stufen A und B bestanden, 2018 und 2019"
+      },
+      "cambridge": {
+        "title": "Cambridge Assessment | Business Vantage C1",
+        "description": "Mit Auszeichnung im Dezember 2018 bestanden"
+      },
+      "szu": {
+        "title": "Ingenieurabschluss in Wirtschaftsingenieurwesen und Betriebsinformatik",
+        "description": "Mit Auszeichnung im Mai 2021 abgeschlossen"
+      },
+      "sap": {
+        "title": "SAP (Enterprise Resource Planning) Zertifizierung",
+        "description": "Bestanden im Januar 2021"
+      }
+    },
+    "playButtons": {
+      "resume": "Fortsetzen",
+      "pause": "Pause",
+      "next": "Nächste Zertifizierung"
+    },
+    "matrix": {
+      "tile": {
+        "ariaLabel": "{certificate} ansehen"
+      }
     }
+  },
+  "Contact": {
+    "title": "Kontakt",
+    "contactPoints": {
+      "github": "Github",
+      "linkedIn": "LinkedIn",
+      "location": "Wien, Österreich"
+    }
+  },
+  "Experience": {
+    "title": "Berufserfahrung",
+    "kulturplanner": {
+      "role": "Fullstack-Entwickler",
+      "atCompany": "bei Kulturplanner",
+      "fromTo": "2022 - Heute",
+      "tasks": {
+        "nextGen": {
+          "title": "Next-Gen-Produkt von Grund auf entwickelt",
+          "description": "Ansätze recherchiert, um das Kernprodukt neu zu erfinden und einen eigenständigen Web-App Prototypen mit Qlik Sense Integration gebaut. Nach Freigabe im Alleingang eine vollständige Next.js Anwendung entwickelt, die das Legacy Qlik Dashboard Produkt des Unternehmens ersetzt hat. Auf dieser Basis hat das Unternehmen den Wechsel von On-Premise zu SaaS vollzogen."
+        },
+        "e2e": {
+          "title": "End-to-End-Verantwortung",
+          "description": "Alleiniger Entwickler, verantwortlich für Architektur, Frontend, Backend, Datenbankdesign, Authentifizierung, Deployment und den Netzwerk-Layer zwischen Qlik und der Web-App. Verantwortung für ein Key Result über zwei aufeinanderfolgende OKR-Zyklen übernommen."
+        },
+        "enterprise": {
+          "title": "Enterprise-Betrieb & Kundenprojekte",
+          "description": "Wartung und Weiterentwicklung von Business Intelligence Lösungen für die größten Theater und Opernhäuser in Österreich, Deutschland und der Schweiz. Bearbeitung von Feature-Requests, Custom Builds, Performance Optimierung, Troubleshooting und On-Call Incident-Response Production Outages."
+        },
+        "pipelines": {
+          "title": "Datenpipeline-Entwicklung",
+          "description": "ETL-Pipelines von Grund auf gebaut, gewartet und überwacht. Legacy Pipeline Integrationen während der Übergangsphase betreut und beim großen Refactor der Legacy Java Monolith Architektur hin zu modernen Python Microservices mitgewirkt, um künftige Projekte zu vereinfachen und Echtzeit Datensynchronisation zu ermöglichen."
+        },
+        "features": {
+          "title": "Produkt-Features nach dem Launch",
+          "description": "Ein neues Produkt entworfen und gebaut, mit dem unsere Kunden ihre Dashboard-Anwendung selbst anpassen können, ohne auf unsere Berater angewiesen zu sein - einen Report-Builder (eigene Dashboards mit Persistenz, Veröffentlichung und Cross-User Sharing) sowie eine E-Mail Scheduling Engine (konfigurierbare Empfänger, Zeitpläne, vorlagenbasierte Dashboard-Snapshots)."
+        },
+        "consulting": {
+          "title": "Kundenberatung",
+          "description": "Kundengespräche zu Pipeline Integrationen geleitet, zu CRM Systemintegrationen mit Partnern beraten und Onboarding sowie Demos für das neue Produkt durchgeführt."
+        },
+        "design": {
+          "title": "Design & UI",
+          "description": "Verantwortlich für alle Produktdesign Entscheidungen - Multi-Dashboard Qlik Apps wurden durch eine klarere, fokussiertere UI ersetzt."
+        }
+      }
+    },
+    "showDescription": "Klicken oder hovern für Details"
+  },
+  "Footer": {
+    "navigation": { "title": "Navigation", "aria": "Footer-Navigation" },
+    "contact": "Kontakt",
+    "profileNewTab": "{platform}-Profil (öffnet in neuem Tab)"
+  },
+  "Hero": {
+    "title": {
+      "intro": "Hi, ich bin",
+      "name": "Simon Zangerl"
+    },
+    "badge": "Verfügbar"
+  },
+  "Navbar": {
+    "items": {
+      "about": "Über mich",
+      "experience": "Erfahrung",
+      "projects": "Projekte",
+      "techStack": "Tech-Stack",
+      "certifications": "Zertifizierungen",
+      "contact": "Kontakt"
+    },
+    "goToTop": "Nach oben",
+    "logo": {
+      "alt": "Simon Zangerl - Portfolio-Startseite"
+    },
+    "navAria": "Hauptnavigation",
+    "mobileNavAria": "Mobile Navigation",
+    "hamburger": {
+      "open": "Menü öffnen",
+      "close": "Menü schließen"
+    }
+  },
+  "Portfolio": {
+    "title": "Projekte",
+    "viewDetailsFor": "Details zu {title} ansehen",
+    "tap": "Tippen",
+    "visit": "Besuchen",
+    "source": "Quellcode",
+    "projects": {
+      "goingInCircles": {
+        "title": "Going in Circles",
+        "description": "Wie viele Alben trennen deine Lieblingskünstler:innen?"
+      },
+      "mozartle": {
+        "title": "Mozartle",
+        "description": "Errate die gesuchte Oper in sechs Versuchen"
+      },
+      "skipBo": {
+        "title": "Skip Bo",
+        "description": "Spiele den Kindheitsklassiker online"
+      },
+      "darinela": {
+        "title": "Darinela Vangelova",
+        "description": "Persönliche Website der bulgarischen Opernsängerin Darinela Vangelova"
+      },
+      "simon": {
+        "title": "Simon Zangerl",
+        "description": "Ich hoffe, es gefällt dir bisher"
+      }
+    }
+  },
+  "TechStack": {
+    "pluralizationYears": "{years, plural, =0 {Keine} =1 {1 Jahr} other {# Jahre}}",
+    "proficiency": {
+      "exploring": "Erkundend",
+      "familiar": "Vertraut",
+      "proficient": "Versiert",
+      "expert": "Experte"
+    }
+  },
+  "ThemeToggle": {
+    "aria": {
+      "toggleDark": "Dark-Mode aktivieren",
+      "toggleLight": "Light-Mode aktivieren",
+      "root": "Farbschema umschalten"
+    }
+  }
 }

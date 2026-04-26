@@ -1,7 +1,9 @@
 "use client"
 
+import { useTranslations } from "next-intl"
 import { Container } from "./container"
 import { scrollToSection } from "@/lib/utils"
+import { platform } from "node:os"
 
 const CELL_COUNT = 8 * 10
 
@@ -10,36 +12,43 @@ type NavItem = {
   href: string
 }
 
-const navItems: NavItem[] = [
-  { label: "About", href: "about" },
-  { label: "Experience", href: "experience" },
-  { label: "Projects", href: "projects" },
-  { label: "Tech Stack", href: "tech-stack" },
-  { label: "Certifications", href: "certifications" },
-  { label: "Get In Touch", href: "get-in-touch" },
-]
-
 type ContactItem = {
   label: string
   href?: string
   ariaLabel?: string
 }
 
-const contactItems: ContactItem[] = [
-  {
-    label: "GitHub",
-    href: "https://github.com/zangerls",
-    ariaLabel: "GitHub profile (opens in a new tab)",
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/szangerl/",
-    ariaLabel: "LinkedIn profile (opens in a new tab)",
-  },
-  { label: "Vienna, Austria" },
-]
-
 export function Footer() {
+  const t = useTranslations("Footer")
+  const tNav = useTranslations("Navbar")
+  const tContact = useTranslations("Contact")
+
+  const navItems: NavItem[] = [
+    { label: tNav("items.about"), href: "about" },
+    { label: tNav("items.experience"), href: "experience" },
+    { label: tNav("items.projects"), href: "projects" },
+    { label: tNav("items.techStack"), href: "tech-stack" },
+    { label: tNav("items.certifications"), href: "certifications" },
+    { label: tNav("items.contact"), href: "get-in-touch" },
+  ]
+
+  const contactItems: ContactItem[] = [
+    {
+      label: tContact("contactPoints.github"),
+      href: "https://github.com/zangerls",
+      ariaLabel: t("profileNewTab", {
+        platform: tContact("contactPoints.github"),
+      }),
+    },
+    {
+      label: tContact("contactPoints.linkedIn"),
+      href: "https://www.linkedin.com/in/szangerl/",
+      ariaLabel: t("profileNewTab", {
+        platform: tContact("contactPoints.linkedIn"),
+      }),
+    },
+    { label: tContact("contactPoints.location") },
+  ]
   return (
     <footer className="relative overflow-hidden border-t bg-white dark:bg-black">
       <div
@@ -78,11 +87,11 @@ export function Footer() {
       <Container>
         <div className="grid grid-cols-1 gap-8 py-16 sm:grid-cols-3 sm:gap-0">
           <nav
-            aria-label="Footer navigation"
+            aria-label={t("navigation.aria")}
             className="flex flex-col items-center justify-center p-8 sm:items-start sm:pl-0"
           >
             <p className="mb-3 text-sm font-semibold tracking-widest text-muted-foreground uppercase">
-              Navigation
+              {t("navigation.title")}
             </p>
             <div className="flex w-fit flex-col items-center sm:items-start has-[button:hover]:[&>button:not(:hover)]:text-muted">
               {navItems.map((item) => (
@@ -108,7 +117,7 @@ export function Footer() {
 
           <div className="flex flex-col items-center justify-center p-8 sm:items-end sm:pr-0">
             <p className="mb-3 text-sm font-semibold tracking-widest text-muted-foreground uppercase">
-              Contact
+              {t("contact")}
             </p>
             <ul className="flex w-fit flex-col items-center sm:items-end has-[a:hover]:[&_a:not(:hover)]:text-muted">
               {contactItems.map((item) => (

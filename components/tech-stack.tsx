@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState, useCallback } from "react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
+import { useTranslations } from "next-intl"
 
 type Level = "expert" | "proficient" | "familiar" | "exploring"
 
@@ -129,6 +130,7 @@ type GroupLayout = {
 }
 
 function ItemsList({ group }: { group: number }) {
+  const t = useTranslations("TechStack")
   return (
     <div className="group/parent mr-8 ml-16 flex flex-col gap-3 pt-20 lg:gap-6">
       {data[group].items.map((item, i) => (
@@ -142,11 +144,10 @@ function ItemsList({ group }: { group: number }) {
             className="flex items-center gap-2 font-sans text-xs leading-none tracking-widest text-muted-foreground uppercase opacity-0 transition-opacity duration-200 group-hover/item:opacity-100 lg:text-sm"
           >
             <span className="h-px w-6 bg-muted-foreground/60" />
-            <span>{item.level}</span>
+            <span>{t(`proficiency.${item.level}`)}</span>
             <span className="text-muted-foreground/50">·</span>
             <span className="tabular-nums">
-              {item.years}
-              {item.years === 1 ? " year" : " years"}
+              {t("pluralizationYears", { years: item.years })}
             </span>
           </span>
         </div>

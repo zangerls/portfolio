@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import { Container } from "./container"
 import { Badge } from "./ui/badge"
+import { useTranslations } from "next-intl"
 
 function AnimatedX({ highlighted = false }: { highlighted?: boolean }) {
   const stroke = "currentColor"
@@ -170,6 +171,7 @@ type Coords = {
 }
 
 export function Hero() {
+  const t = useTranslations("Hero")
   const [cols, setCols] = useState<number>(16)
   const [rows, setRows] = useState<number>(20)
   const [breakpoint, setBreakpoint] = useState<Breakpoint>("xl")
@@ -354,10 +356,10 @@ export function Hero() {
       <div className="relative flex h-full flex-col items-center justify-center">
         <Container>
           <div className="flex flex-col items-center justify-center gap-4">
-            <Badge>Available for work</Badge>
+            <Badge>{t("badge")}</Badge>
             <div className="text-center font-heading text-5xl font-semibold sm:text-6xl md:text-7xl lg:text-8xl">
-              <p aria-hidden="true">Hi, I am</p>
-              <h1>Simon Zangerl</h1>
+              <p aria-hidden="true">{t("title.intro")}</p>
+              <h1>{t("title.name")}</h1>
             </div>
           </div>
         </Container>
