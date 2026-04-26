@@ -1,10 +1,10 @@
 import { cn } from "@/lib/utils"
 
-type Props = {
+export type CrosshairProps = {
   position: "top-right" | "top-left" | "bottom-right" | "bottom-left"
 }
 
-export function Crosshair({ position }: Props) {
+export function Crosshair({ position }: CrosshairProps) {
   const horizontalX = position.includes("left")
     ? "left-[-12px]"
     : "right-[-12px]"
@@ -16,12 +16,14 @@ export function Crosshair({ position }: Props) {
   return (
     <>
       <div
+        aria-hidden="true"
         className={cn(
           `${horizontalX} ${horizontalY}`,
           "absolute w-[24px] border-b border-muted-foreground"
         )}
       />
       <div
+        aria-hidden="true"
         className={cn(
           `${verticalX} ${verticalY}`,
           "absolute h-[24px] border-l border-muted-foreground"
