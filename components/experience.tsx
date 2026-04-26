@@ -15,12 +15,12 @@ const tasks: Task[] = [
   {
     label: "Built next-gen product from scratch",
     description:
-      "Researched enigma.js/nebula.js, prototyped a standalone web app integrating Qlik Sense, got approval, then solo-built a full Next.js application that replaced the company's legacy Qlik dashboard product. Company pivoted from on-prem to SaaS on the back of this.",
+      "Researched options to reinvent core product, prototyped a standalone web app integrating Qlik Sense. Got approval, then solo-built a full Next.js application that replaced the company's legacy Qlik dashboard product. Company pivoted from on-prem to SaaS on the back of this.",
   },
   {
     label: "End-to-end ownership",
     description:
-      "Sole developer responsible for architecture, frontend, backend, database design, auth, deployment, virtual proxy config, and the network layer between Qlik and the web app. Took ownership of a key result for two consecutive OKR cycles.",
+      "Sole developer responsible for architecture, frontend, backend, database design, auth, deployment and the network layer between Qlik and the web app. Took ownership of a key result for two consecutive OKR cycles.",
   },
   {
     label: "Enterprise operations & client projects",
@@ -30,17 +30,17 @@ const tasks: Task[] = [
   {
     label: "Data pipeline development",
     description:
-      "Built, maintained, and monitored ETL pipelines from scratch. Maintained legacy pipeline integrations during transition period.",
+      "Built, maintained, and monitored ETL pipelines from scratch. Maintained legacy pipeline integrations during transition period and helped in the major refactor of legacy Java monolith architecture to modern Python microservices to streamline future projects and enable real-time data synchronization.",
   },
   {
     label: "Product features post-launch",
     description:
-      "Designed and built a report builder (custom dashboards with persistence, publishing, cross-user sharing) and an email scheduling engine (configurable recipients, schedules, templated dashboard snapshots).",
+      "Designed and built a new product for our clients to tailor their dashboard application without the reliance on our consultants, a report builder (custom dashboards with persistence, publishing, cross-user sharing) and an email scheduling engine (configurable recipients, schedules, templated dashboard snapshots).",
   },
   {
     label: "Client-facing consulting",
     description:
-      "Led customer meetings for pipeline integrations, advised on CRM system integrations with partners, handled onboarding and demos for the new product.",
+      "Led customer meetings for pipeline integrations, advised on CRM system integrations with partners and handled onboarding and demos for the new product.",
   },
   {
     label: "Design & UX",
