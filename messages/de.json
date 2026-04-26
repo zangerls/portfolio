@@ -115,6 +115,15 @@
     },
     "badge": "Verfügbar"
   },
+  "LocaleSwitcher": {
+    "aria": {
+      "root": "Sprache ändern"
+    },
+    "locales": {
+      "en": "Englisch",
+      "de": "Deutsch"
+    }
+  },
   "Navbar": {
     "items": {
       "about": "Über mich",

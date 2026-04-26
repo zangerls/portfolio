@@ -115,6 +115,15 @@
     },
     "badge": "Available for work"
   },
+  "LocaleSwitcher": {
+    "aria": {
+      "root": "Change language"
+    },
+    "locales": {
+      "en": "English",
+      "de": "German"
+    }
+  },
   "Navbar": {
     "items": {
       "about": "About",

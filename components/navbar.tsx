@@ -4,6 +4,7 @@ import { useState } from "react"
 import { IconMenu2, IconX } from "@tabler/icons-react"
 import { Container } from "./container"
 import { ThemeToggle } from "./theme-toggle"
+import { LocaleSwitcher } from "./locale-switcher"
 import { Separator } from "./ui/separator"
 import Image from "next/image"
 import { scrollToSection } from "@/lib/utils"
@@ -62,7 +63,8 @@ export function Navbar() {
             ))}
           </nav>
 
-          <div className="hidden lg:block">
+          <div className="hidden items-center gap-2 lg:flex">
+            <LocaleSwitcher />
             <ThemeToggle />
           </div>
 
@@ -123,10 +125,11 @@ export function Navbar() {
               style={{
                 transitionDelay: open ? `${items.length * 40}ms` : "0ms",
               }}
-              className={`py-2 transition-all duration-200 ${
+              className={`flex items-center gap-2 py-2 transition-all duration-200 ${
                 open ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
               }`}
             >
+              <LocaleSwitcher />
               <ThemeToggle />
             </div>
           </nav>
