@@ -1,11 +1,14 @@
 import { Geist, Geist_Mono, Poppins } from "next/font/google"
 
-import "./globals.css"
+import "../globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
 import ReactLenis from "lenis/react"
 import { Navbar } from "@/components/navbar"
 import { Metadata } from "next"
+import { hasLocale, NextIntlClientProvider } from "next-intl"
+import { routing } from "@/i18n/routing"
+import { notFound } from "next/navigation"
 
 const poppinsHeading = Poppins({
   weight: ["400", "600"],
@@ -34,11 +37,16 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode
+  params: Promise<{ locale: string }>
 }>) {
+  const { locale } = await params
+  if (!hasLocale(routing.locales, locale)) notFound()
+
   return (
     <html
       lang="en"
@@ -52,12 +60,14 @@ export default function RootLayout({
       )}
     >
       <body>
-        <ThemeProvider defaultTheme="dark" enableSystem={false}>
-          <ReactLenis root>
-            <Navbar />
-            {children}
-          </ReactLenis>
-        </ThemeProvider>
+        <NextIntlClientProvider>
+          <ThemeProvider defaultTheme="dark" enableSystem={false}>
+            <ReactLenis root>
+              <Navbar />
+              {children}
+            </ReactLenis>
+          </ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   )
