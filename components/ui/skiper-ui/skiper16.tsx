@@ -38,7 +38,6 @@ const StickyCard_001 = ({
 }) => {
   const t = useTranslations("Portfolio")
   const container = useRef<HTMLDivElement>(null)
-  const { theme } = useTheme()
   const scale = useTransform(progress, range, [1, targetScale])
 
   return (
@@ -106,10 +105,7 @@ const StickyCard_001 = ({
           </p>
           <div className="flex w-full items-center justify-center gap-2">
             {href && (
-              <Button
-                variant={theme === "light" ? "secondary" : "default"}
-                asChild
-              >
+              <Button variant="default" asChild>
                 <a
                   href={href}
                   target="_blank"
@@ -121,10 +117,7 @@ const StickyCard_001 = ({
                 </a>
               </Button>
             )}
-            <Button
-              variant={theme === "light" ? "secondary" : "default"}
-              asChild
-            >
+            <Button variant="default" asChild>
               <a
                 href={github}
                 target="_blank"

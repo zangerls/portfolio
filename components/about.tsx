@@ -3,8 +3,6 @@
 import Image from "next/image"
 import { Container } from "./container"
 import { Crosshair, type CrosshairProps } from "./crosshair"
-import { useTheme } from "next-themes"
-import { cn } from "@/lib/utils"
 import { useLocale, useTranslations } from "next-intl"
 
 type AboutCardProps = {
@@ -32,7 +30,6 @@ function AboutCard({
   index,
 }: AboutCardProps) {
   const locale = useLocale()
-  const { theme } = useTheme()
   const num = index.toString().padStart(2, "0")
 
   return (
@@ -58,10 +55,7 @@ function AboutCard({
             height={100}
             width={100}
             alt={image[locale].alt}
-            className={cn(
-              "h-[100px] w-auto",
-              theme === "light" ? "invert" : ""
-            )}
+            className="h-[100px] w-auto invert dark:invert-0"
           />
           <p className="font-heading text-xl font-semibold">{label}</p>
         </div>
