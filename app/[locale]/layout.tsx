@@ -9,6 +9,7 @@ import { Metadata } from "next"
 import { hasLocale, NextIntlClientProvider } from "next-intl"
 import { routing } from "@/i18n/routing"
 import { notFound } from "next/navigation"
+import { TooltipProvider } from "@/components/ui/tooltip"
 
 const poppinsHeading = Poppins({
   weight: ["400", "600"],
@@ -63,8 +64,10 @@ export default async function RootLayout({
         <NextIntlClientProvider>
           <ThemeProvider defaultTheme="dark" enableSystem={false}>
             <ReactLenis root>
-              <Navbar />
-              {children}
+              <TooltipProvider>
+                <Navbar />
+                {children}
+              </TooltipProvider>
             </ReactLenis>
           </ThemeProvider>
         </NextIntlClientProvider>
