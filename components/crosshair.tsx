@@ -8,9 +8,9 @@ export function Crosshair({ position }: CrosshairProps) {
   const horizontalX = position.includes("left")
     ? "left-[-12px]"
     : "right-[-12px]"
-  const horizontalY = position.includes("top") ? "top-[-1]" : "bottom-[-1]"
+  const horizontalY = position.includes("top") ? "top-[-1px]" : "bottom-[-1px]"
 
-  const verticalX = position.includes("left") ? "left-[-1]" : "right-[-1]"
+  const verticalX = position.includes("left") ? "left-[-1px]" : "right-[-1px]"
   const verticalY = position.includes("top") ? "top-[-12px]" : "bottom-[-12px]"
 
   return (
