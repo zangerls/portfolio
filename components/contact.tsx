@@ -20,7 +20,7 @@ export async function Contact() {
       name: t("contactPoints.github"),
       href: "https://github.com/zangerls",
       image: {
-        src: "github.svg",
+        src: "/github.svg",
         alt: `${t("contactPoints.github")} Logo`,
       },
     },
@@ -35,7 +35,7 @@ export async function Contact() {
     {
       name: t("contactPoints.location"),
       image: {
-        src: "map-pin.svg",
+        src: "/map-pin.svg",
         alt: t("contactPoints.location"),
       },
     },

@@ -81,11 +81,11 @@ export function About() {
       description: t("sections.purist.description"),
       image: {
         en: {
-          src: "P.svg",
+          src: "/P.svg",
           alt: t("letterX", { char: "P" }),
         },
         de: {
-          src: "P.svg",
+          src: "/P.svg",
           alt: t("letterX", { char: "P" }),
         },
       },
@@ -98,11 +98,11 @@ export function About() {
       description: t("sections.jack.description"),
       image: {
         en: {
-          src: "J.svg",
+          src: "/J.svg",
           alt: t("letterX", { char: "J" }),
         },
         de: {
-          src: "A.svg",
+          src: "/A.svg",
           alt: t("letterX", { char: "A" }),
         },
       },
@@ -114,11 +114,11 @@ export function About() {
       description: t("sections.future.description"),
       image: {
         en: {
-          src: "F.svg",
+          src: "/F.svg",
           alt: t("letterX", { char: "F" }),
         },
         de: {
-          src: "Z.svg",
+          src: "/Z.svg",
           alt: t("letterX", { char: "Z" }),
         },
       },
