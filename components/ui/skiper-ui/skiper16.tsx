@@ -6,7 +6,6 @@ import Image from "next/image"
 import { Button } from "../button"
 import { Badge } from "../badge"
 import { IconArrowUpRight, IconBrandGithub } from "@tabler/icons-react"
-import { useTheme } from "next-themes"
 import { useTranslations } from "next-intl"
 
 const StickyCard_001 = ({
