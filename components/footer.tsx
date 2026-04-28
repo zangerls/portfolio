@@ -3,7 +3,6 @@
 import { useTranslations } from "next-intl"
 import { Container } from "./container"
 import { scrollToSection } from "@/lib/utils"
-import { platform } from "node:os"
 
 const CELL_COUNT = 8 * 10
 
