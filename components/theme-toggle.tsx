@@ -50,7 +50,7 @@ export function ThemeToggle() {
         </Button>
       </TooltipTrigger>
       <TooltipContent>
-        {!isLight ? t("aria.toggleLight") : t("aria.toggleLight")}
+        {!isLight ? t("aria.toggleLight") : t("aria.toggleDark")}
       </TooltipContent>
     </Tooltip>
   )
