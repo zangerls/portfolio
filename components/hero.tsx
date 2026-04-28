@@ -296,7 +296,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative h-[90vh] w-full overflow-hidden bg-white dark:bg-black"
+      className="relative h-[90vh] w-full overflow-hidden bg-background"
     >
       <div
         aria-hidden="true"
