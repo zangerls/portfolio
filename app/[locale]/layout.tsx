@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     default: "About Me | Simon Zangerl",
   },
   description: "Portfolio of Simon Zangerl",
-  authors: [{ name: "Simon Zangerl", url: "https://simon-zangerl.com" }],
+  authors: [{ name: "Simon Zangerl", url: "https://szangerl.com" }],
   creator: "Simon Zangerl",
   publisher: "Simon Zangerl",
   appleWebApp: {
