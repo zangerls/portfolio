@@ -77,6 +77,7 @@ const data: TechData[] = [
       { label: "C#", level: "proficient", years: 2 },
       { label: ".NET", level: "proficient", years: 2 },
       { label: "ASP.NET Core", level: "proficient", years: 2 },
+      { label: "Entity Framework Core", level: "proficient", years: 2 },
       { label: "SignalR", level: "familiar", years: 1 },
       { label: "xUnit", level: "proficient", years: 2 },
     ],
