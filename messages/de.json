@@ -159,6 +159,10 @@
         "title": "Mozartle",
         "description": "Errate die gesuchte Oper in sechs Versuchen"
       },
+      "everythingIsACoin": {
+        "title": "everything is a coin",
+        "description": "Sisyphos hatte seinen Felsen. Du hast diese Münze."
+      },
       "skipBo": {
         "title": "Skip Bo",
         "description": "Spiele den Kindheitsklassiker online"

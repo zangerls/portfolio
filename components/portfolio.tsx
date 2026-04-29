@@ -42,6 +42,13 @@ export function Portfolio() {
       techStack: ["Next.js", "Vercel", "Postgres", "Supabase", "Prisma"],
     },
     {
+      src: "/everything-is-a-coin.webp",
+      title: t("projects.everythingIsACoin.title"),
+      description: t("projects.everythingIsACoin.description"),
+      github: "https://github.com/zangerls/everything-is-a-coin",
+      techStack: ["React Native", "Expo"],
+    },
+    {
       src: "/skipbo.webp",
       title: t("projects.skipBo.title"),
       description: t("projects.skipBo.description"),
@@ -57,7 +64,7 @@ export function Portfolio() {
       techStack: ["Next.js", "Vercel", "shadcn", "next-intl", "Figma"],
     },
     {
-      src: "/web-app-manifest-512x512.png",
+      src: "/simon-zangerl.webp",
       title: t("projects.simon.title"),
       description: t("projects.simon.description"),
       github: "https://github.com/zangerls/portfolio",

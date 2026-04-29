@@ -159,6 +159,10 @@
         "title": "Mozartle",
         "description": "Guess today's opera in six guesses or fewer"
       },
+      "everythingIsACoin": {
+        "title": "everything is a coin",
+        "description": "Sisyphus had his boulder. You have this."
+      },
       "skipBo": {
         "title": "Skip Bo",
         "description": "Play the childhood classic online"
