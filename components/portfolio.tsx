@@ -68,7 +68,7 @@ export function Portfolio() {
       title: t("projects.simon.title"),
       description: t("projects.simon.description"),
       github: "https://github.com/zangerls/portfolio",
-      href: "https://simon-zangerl.com",
+      href: "https://szangerl.com",
       techStack: ["Next.js", "Vercel", "shadcn", "motion", "Figma"],
     },
   ]

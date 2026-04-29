@@ -1,4 +1,11 @@
 {
+  "Metadata": {
+    "title": "Simon Zangerl — Portfolio",
+    "titleTemplate": "%s | Simon Zangerl",
+    "description": "Simon Zangerl — Fullstack-Entwickler aus Wien, Österreich mit fast zehn Jahren Erfahrung in allen Dingen Software.",
+    "ogAlt": "Simon Zangerl — Portfolio",
+    "siteName": "Simon Zangerl"
+  },
   "About": {
     "title": "Über mich",
     "sections": {

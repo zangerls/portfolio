@@ -1,4 +1,11 @@
 {
+  "Metadata": {
+    "title": "Simon Zangerl — Portfolio",
+    "titleTemplate": "%s | Simon Zangerl",
+    "description": "Simon Zangerl — fullstack software engineer based in Vienna, Austria with almost ten years of experience in all things software.",
+    "ogAlt": "Simon Zangerl — Portfolio",
+    "siteName": "Simon Zangerl"
+  },
   "About": {
     "title": "About",
     "sections": {
