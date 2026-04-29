@@ -2,6 +2,8 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google"
 
 import "../globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { cn } from "@/lib/utils"
 import ReactLenis from "lenis/react"
 import { Navbar } from "@/components/navbar"
@@ -11,6 +13,7 @@ import { getTranslations } from "next-intl/server"
 import { routing } from "@/i18n/routing"
 import { notFound } from "next/navigation"
 import { TooltipProvider } from "@/components/ui/tooltip"
+import { Suspense } from "react"
 
 const SITE_URL = "https://szangerl.com"
 
@@ -119,6 +122,10 @@ export default async function RootLayout({
       )}
     >
       <body>
+        <Suspense>
+          <Analytics />
+          <SpeedInsights />
+        </Suspense>
         <NextIntlClientProvider>
           <ThemeProvider defaultTheme="dark" enableSystem={false}>
             <ReactLenis root>
