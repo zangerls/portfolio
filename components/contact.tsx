@@ -33,6 +33,14 @@ export async function Contact() {
       },
     },
     {
+      name: t("contactPoints.email"),
+      href: "mailto:hello@szangerl.com",
+      image: {
+        src: "/mail.svg",
+        alt: `${t("contactPoints.email")}`,
+      },
+    },
+    {
       name: t("contactPoints.location"),
       image: {
         src: "/map-pin.svg",

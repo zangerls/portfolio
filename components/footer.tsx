@@ -46,6 +46,13 @@ export function Footer() {
         platform: tContact("contactPoints.linkedIn"),
       }),
     },
+    {
+      label: tContact("contactPoints.email"),
+      href: "mailto:hello@szangerl.com",
+      ariaLabel: t("profileNewTab", {
+        platform: tContact("contactPoints.email"),
+      }),
+    },
     { label: tContact("contactPoints.location") },
   ]
   return (
