@@ -293,7 +293,7 @@ export function CursorDrivenParticleTypography({
     <div
       ref={containerRef}
       className={cn(
-        "relative flex h-full w-full touch-none items-center justify-center",
+        "relative flex h-full w-full touch-pan-y items-center justify-center",
         className
       )}
     >
