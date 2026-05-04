@@ -133,21 +133,21 @@ type GroupLayout = {
 function ItemsList({ group }: { group: number }) {
   const t = useTranslations("TechStack")
   return (
-    <div className="group/parent mr-8 ml-16 flex flex-col gap-3 pt-20 lg:gap-6">
+    <div className="group/parent mr-4 ml-6 flex flex-col gap-2 pt-20 sm:mr-8 sm:ml-16 lg:gap-6">
       {data[group].items.map((item, i) => (
         <div
           key={i}
-          className="group/item flex items-center gap-4 font-heading text-3xl text-foreground transition-all group-hover/parent:text-muted hover:text-foreground lg:text-6xl"
+          className="group/item flex items-center gap-2 font-heading text-3xl text-foreground transition-all group-hover/parent:text-muted hover:text-foreground lg:gap-4 lg:text-5xl 2xl:text-6xl"
         >
           <span className="leading">{item.label}</span>
           <span
             aria-hidden
-            className="flex items-center gap-2 font-sans text-xs leading-none tracking-widest text-muted-foreground uppercase opacity-0 transition-opacity duration-200 group-hover/item:opacity-100 lg:text-sm"
+            className="flex items-center gap-2 font-sans text-xs leading-none tracking-widest text-muted-foreground uppercase opacity-100 transition-opacity duration-200 lg:text-sm lg:opacity-0 lg:group-hover/item:opacity-100"
           >
-            <span className="h-px w-6 bg-muted-foreground/60" />
+            <span className="h-px w-3 bg-muted-foreground/60 lg:w-6" />
             <span>{t(`proficiency.${item.level}`)}</span>
-            <span className="text-muted-foreground/50">·</span>
-            <span className="tabular-nums">
+            <span className="hidden text-muted-foreground/50 lg:inline">·</span>
+            <span className="hidden tabular-nums whitespace-nowrap lg:inline">
               {t("pluralizationYears", { years: item.years })}
             </span>
           </span>
