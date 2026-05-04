@@ -84,14 +84,14 @@ export async function Contact() {
                   {c.href && (
                     <IconArrowUpRight
                       size="2rem"
-                      className="opacity-0 transition-opacity [.contact-item:hover_&]:opacity-100"
+                      className="opacity-100 transition-opacity md:opacity-0 [.contact-item:hover_&]:opacity-100"
                     />
                   )}
                 </>
               )
 
               const baseClasses =
-                "contact-item flex items-center gap-4 transition-all group-has-[.contact-item:hover]:opacity-20 hover:!opacity-100 py-2 lg:py-3"
+                "contact-item flex items-center gap-4 transition-all md:group-has-[.contact-item:hover]:opacity-20 hover:!opacity-100 py-2 lg:py-3"
 
               if (c.href) {
                 return (
