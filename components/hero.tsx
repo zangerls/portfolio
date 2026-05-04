@@ -105,22 +105,39 @@ const GAMES = {
   ],
   md: [
     {
-      x: [22, 31, 8, 9, 15],
-      o: [16, 33, 7, 10],
-      winLine: [8, 15, 22],
+      x: [41, 37, 106, 92],
+      o: [42, 93, 31, 53],
+      winLine: [31, 42, 53],
+    },
+    {
+      x: [44, 43, 95, 23],
+      o: [34, 45, 58, 56],
+      winLine: [34, 45, 56],
     },
     {
       x: [34, 7, 30, 17, 38],
       o: [37, 11, 15, 14, 13],
       winLine: [13, 14, 15],
     },
-    {
-      x: [32, 44, 15, 10, 7],
-      o: [38, 8, 43, 9, 33],
-      winLine: [33, 38, 43],
-    },
   ],
   sm: [
+    {
+      x: [13, 40, 14, 45, 15],
+      o: [19, 43, 16, 50],
+      winLine: [13, 14, 15],
+    },
+    {
+      x: [37, 19, 46, 50],
+      o: [38, 45, 44, 52],
+      winLine: [38, 45, 52],
+    },
+    {
+      x: [44, 30, 19, 25, 13],
+      o: [9, 14, 45, 22],
+      winLine: [13, 19, 25],
+    },
+  ],
+  xs: [
     {
       x: [9, 13, 25, 20, 30],
       o: [10, 5, 24, 28],
@@ -139,13 +156,14 @@ const GAMES = {
   ],
 }
 
-type Breakpoint = "sm" | "md" | "lg" | "xl"
+type Breakpoint = "xs" | "sm" | "md" | "lg" | "xl"
 
 function getBreakpoint(width: number): Breakpoint {
   if (width >= 1280) return "xl"
   if (width >= 1024) return "lg"
   if (width >= 768) return "md"
-  return "sm"
+  if (width >= 640) return "sm"
+  return "xs"
 }
 
 function getRowsForViewport(width: number) {
