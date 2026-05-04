@@ -137,7 +137,7 @@ function ItemsList({ group }: { group: number }) {
       {data[group].items.map((item, i) => (
         <div
           key={i}
-          className="group/item flex items-center gap-2 font-heading text-3xl text-foreground transition-all group-hover/parent:text-muted hover:text-foreground lg:gap-4 lg:text-5xl 2xl:text-6xl"
+          className="group/item flex items-center gap-2 font-heading text-3xl text-foreground transition-all group-hover/parent:text-muted hover:text-foreground md:text-4xl lg:gap-4 lg:text-5xl 2xl:text-6xl"
         >
           <span className="leading">{item.label}</span>
           <span
@@ -147,7 +147,7 @@ function ItemsList({ group }: { group: number }) {
             <span className="h-px w-3 bg-muted-foreground/60 lg:w-6" />
             <span>{t(`proficiency.${item.level}`)}</span>
             <span className="hidden text-muted-foreground/50 lg:inline">·</span>
-            <span className="hidden tabular-nums whitespace-nowrap lg:inline">
+            <span className="hidden whitespace-nowrap tabular-nums lg:inline">
               {t("pluralizationYears", { years: item.years })}
             </span>
           </span>
@@ -263,7 +263,7 @@ export function TechStack() {
                         ? "dark:invert"
                         : "invert dark:invert-0",
                       category.image.className ??
-                        "h-24 w-24 sm:h-36 sm:w-36 lg:h-48 lg:w-48",
+                        "h-28 w-28 sm:h-36 sm:w-36 lg:h-48 lg:w-48",
                       "object-contain"
                     )}
                     src={category.image.src}
