@@ -6,6 +6,11 @@
     "ogAlt": "Simon Zangerl — Portfolio",
     "siteName": "Simon Zangerl"
   },
+  "NotFound": {
+    "title": "Seite nicht gefunden",
+    "description": "Interesse an einer schnellen Runde Tic Tac Toe?",
+    "backHome": "Zurück zur Startseite"
+  },
   "About": {
     "title": "Über mich",
     "sections": {
