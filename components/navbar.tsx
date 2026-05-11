@@ -9,6 +9,7 @@ import { Separator } from "./ui/separator"
 import Image from "next/image"
 import { scrollToSection } from "@/lib/utils"
 import { useTranslations } from "next-intl"
+import { usePathname, useRouter } from "@/i18n/navigation"
 
 type NavbarItem = {
   label: string
@@ -18,8 +19,13 @@ type NavbarItem = {
 export function Navbar() {
   const t = useTranslations("Navbar")
   const [open, setOpen] = useState<boolean>(false)
+  const router = useRouter()
+  const path = usePathname()
 
   function handleNav(href: string): void {
+    if (path !== "/") {
+      router.replace("/")
+    }
     setOpen(false)
     scrollToSection(href)
   }
