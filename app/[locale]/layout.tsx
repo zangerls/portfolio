@@ -7,6 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { cn } from "@/lib/utils"
 import ReactLenis from "lenis/react"
 import { Navbar } from "@/components/navbar"
+import { Preloader } from "@/components/preloader"
 import { Metadata } from "next"
 import { hasLocale, NextIntlClientProvider } from "next-intl"
 import { getTranslations } from "next-intl/server"
@@ -130,6 +131,7 @@ export default async function RootLayout({
           <ThemeProvider defaultTheme="dark" enableSystem={false}>
             <ReactLenis root>
               <TooltipProvider>
+                <Preloader />
                 <Navbar />
                 {children}
               </TooltipProvider>
