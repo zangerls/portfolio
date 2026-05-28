@@ -48,7 +48,7 @@ export function Footer() {
     },
     {
       label: tContact("contactPoints.email"),
-      href: "mailto:hello@szangerl.com",
+      href: "mailto:simon.zangerl@hotmail.com",
       ariaLabel: t("profileNewTab", {
         platform: tContact("contactPoints.email"),
       }),

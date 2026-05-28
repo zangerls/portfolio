@@ -34,7 +34,7 @@ export async function Contact() {
     },
     {
       name: t("contactPoints.email"),
-      href: "mailto:hello@szangerl.com",
+      href: "mailto:simon.zangerl@hotmail.com",
       image: {
         src: "/mail.svg",
         alt: `${t("contactPoints.email")}`,

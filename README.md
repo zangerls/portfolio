@@ -2,8 +2,7 @@
 
 A modern, responsive personal portfolio built with Next.js, Tailwind CSS, shadcn/ui, and Framer Motion. Designed to showcase projects, experience, certifications, and contact information with smooth interactions and clean UI patterns.
 
-[Check it out!](https://szangerl.com)
----
+## [Check it out!](https://szangerl.com)
 
 ## Features
 
@@ -105,6 +104,6 @@ This portfolio focuses on:
 Feel free to reach out if you'd like to collaborate or connect.
 
 - Website: https://szangerl.com
-- Email: [hello@szangerl.com](mailto:hello@szangerl.com)
+- Email: [simon.zangerl@hotmail.com](mailto:simon.zangerl@hotmail.com)
 - LinkedIn: https://linkedin.com/in/szangerl
 - Github: https://github.com/zangerls
