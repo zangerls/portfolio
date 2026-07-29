@@ -79,10 +79,14 @@
   },
   "Experience": {
     "title": "Experience",
+    "tabs": {
+      "ariaLabel": "Select a position"
+    },
     "kulturplanner": {
+      "company": "Kulturplanner",
       "role": "Fullstack Engineer",
       "atCompany": "at Kulturplanner",
-      "fromTo": "2022 - Current",
+      "fromTo": "2022 - 2026",
       "tasks": {
         "nextGen": {
           "title": "Built next-gen product from scratch",
@@ -113,6 +117,17 @@
           "description": "Owned all product design decisions, replacing dense multi-dashboard Qlik apps with a cleaner, more focused UI."
         }
       }
+    },
+    "reebuild": {
+      "company": "reebuild",
+      "role": "Fullstack Engineer",
+      "atCompany": "at reebuild",
+      "fromTo": "2026 - Current"
+    },
+    "wip": {
+      "tag": "In progress",
+      "label": "Just getting started",
+      "description": "Recently started. Responsibilities and highlights will show up here as the work takes shape."
     },
     "showDescription": "Click or hover to see details"
   },

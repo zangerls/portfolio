@@ -79,10 +79,14 @@
   },
   "Experience": {
     "title": "Berufserfahrung",
+    "tabs": {
+      "ariaLabel": "Position auswählen"
+    },
     "kulturplanner": {
+      "company": "Kulturplanner",
       "role": "Fullstack-Entwickler",
       "atCompany": "bei Kulturplanner",
-      "fromTo": "2022 - Heute",
+      "fromTo": "2022 - 2026",
       "tasks": {
         "nextGen": {
           "title": "Next-Gen-Produkt von Grund auf entwickelt",
@@ -113,6 +117,17 @@
           "description": "Verantwortlich für alle Produktdesign Entscheidungen - Multi-Dashboard Qlik Apps wurden durch eine klarere, fokussiertere UI ersetzt."
         }
       }
+    },
+    "reebuild": {
+      "company": "reebuild",
+      "role": "Fullstack-Entwickler",
+      "atCompany": "bei reebuild",
+      "fromTo": "2026 - Heute"
+    },
+    "wip": {
+      "tag": "In Arbeit",
+      "label": "Gerade erst gestartet",
+      "description": "Kürzlich begonnen. Aufgaben und Highlights erscheinen hier, sobald die Arbeit Form annimmt."
     },
     "showDescription": "Klicken oder hovern für Details"
   },

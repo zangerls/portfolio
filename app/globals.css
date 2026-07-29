@@ -132,6 +132,44 @@
   }
 }
 
+.dither-field {
+  background-repeat: repeat;
+  animation: dither-drift 14s linear infinite;
+}
+
+.dither-field--fine {
+  background-image: radial-gradient(currentColor 1px, transparent 1.2px);
+  background-size: 6px 6px;
+  opacity: 0.45;
+  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 65%);
+  mask-image: linear-gradient(to top, black 0%, transparent 65%);
+}
+
+.dither-field--coarse {
+  background-image: radial-gradient(currentColor 1.6px, transparent 1.8px);
+  background-size: 12px 12px;
+  opacity: 0.3;
+  animation-duration: 22s;
+  animation-direction: reverse;
+  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 100%);
+  mask-image: linear-gradient(to top, black 0%, transparent 100%);
+}
+
+@keyframes dither-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 -24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dither-field {
+    animation: none;
+  }
+}
+
 ::selection {
   background: var(--foreground);
   color: var(--background);
