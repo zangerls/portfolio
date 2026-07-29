@@ -374,7 +374,9 @@ export function Hero() {
       <div className="relative flex h-full flex-col items-center justify-center">
         <Container>
           <div className="flex flex-col items-center justify-center gap-4">
-            <Badge>{t("badge")}</Badge>
+            <Badge>
+              <a href="https://reebuild.com">{t("badge")}</a>
+            </Badge>
             <div className="text-center font-heading text-5xl font-semibold sm:text-6xl md:text-7xl lg:text-8xl">
               <p aria-hidden="true">{t("title.intro")}</p>
               <h1>{t("title.name")}</h1>
